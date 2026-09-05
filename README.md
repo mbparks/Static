@@ -99,6 +99,42 @@ Stubbed, awaiting **firmware v0** on real ESP32 hardware:
 3. Campaign file import/export in the console (the authoring promise).
 4. Rulebook to v1.0: Part Three chapter 6, cant & chrome catalogs, prices.
 
+## Concept mockups
+
+The design was mocked before it was built; these are the concepts the live
+pages grew from, kept in `docs/mockups/` as part of the record.
+
+**System architecture** — one brain (the console), many performers:
+
+![System architecture](docs/mockups/architecture.svg)
+
+**The ring vocabulary** — the Shard's LED language: three baselines, five
+overlays, two moments. Color says *what*, motion says *how much*; frozen
+frames shown here, the firmware breathes:
+
+![Ring vocabulary](docs/mockups/ring-vocabulary.svg)
+
+**The Forge flow** — connect, build, speak the name on its own bare screen,
+ignite in name-derived order, print the first card:
+
+![Forge flow](docs/mockups/forge-flow.svg)
+
+**The table view** (combat mode) — zones mirroring the physical table, the
+heat track as shared dread, party strip readable across a room:
+
+![Table view concept](docs/mockups/table-view.svg)
+
+**The GM console** — roster, resolve, and the record; one or two taps per
+resolution:
+
+![GM console concept](docs/mockups/gm-console.svg)
+
+**The character card** — a dated dossier snapshot, printed fresh each
+session: everything you roll on the front, everything you look up on the
+back:
+
+![Character card concept](docs/mockups/character-card.svg)
+
 ## The book
 
 `rulebook-v0.8.md` is canonical. `book.html` is generated from it. If you
