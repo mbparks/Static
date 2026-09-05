@@ -80,6 +80,7 @@ One for players, Part Three for the GM).
 | `forge.html` | Character creation as a rite; consecrates a real Shard over USB, or runs in effigy. Prints the character card. |
 | `status.html` | "The Record" — reads a Shard's soul back. |
 | `console.html` / `table.html` | The GM's console and the projected table view. |
+| `static-character-sheet.pdf` | A print-and-pencil character sheet: circle the presets, fill the blanks, with the House sigils. |
 | `firmware/` | ESP32 firmware for the player Shard and the GM dock (WIP). |
 | `docs/` | Hardware diagrams, concept art, image prompts, and mockups. |
 
