@@ -307,6 +307,13 @@ back:
 
 ![Character card concept](docs/mockups/character-card.svg)
 
+## House sigils
+
+A matched heraldic set — one mark per House, each in the House's colour.
+Individual SVGs are in `docs/sigils/`.
+
+![The six House sigils](docs/sigils/contact-sheet.png)
+
 ## House concept art
 
 Field plates for the Six Houses — two figures each, kept in

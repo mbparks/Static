@@ -234,6 +234,13 @@ lives they will wake from sleep when it sounds wrong. Every enclave
 that has light owes them. Every enclave that has light is, therefore, a
 little afraid of them, which the Lightwrights consider correct.
 
+### The marks of the Houses
+
+Every House stamps its own sign on what it certifies, seals, or claims.
+You learn to read them before you learn to read.
+
+![The six House sigils](docs/sigils/contact-sheet.png)
+
 ### The name
 
 The thing that woke had a name before it woke: **SHEPHERD**. It was the
