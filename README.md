@@ -248,6 +248,11 @@ battery, base.
 
 ![Exploded view of a player token](docs/hardware/exploded.svg)
 
+Printed from `docs/hardware/shard-base.scad` (ready-to-slice STLs alongside):
+
+![Printed base shell](docs/hardware/render-shell.png)
+![Printed lid](docs/hardware/render-lid.png)
+
 ### Wiring a Shard
 
 A LiPo cell charges over USB-C through a TP4056 charge manager and feeds a
