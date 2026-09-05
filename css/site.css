@@ -256,3 +256,14 @@ body.tv{padding:0; background:#07080b; overflow:hidden;}
   animation:creditroll 30s linear forwards;}
 @keyframes creditroll{ from{top:100%;} to{top:-200%;} }
 @media (prefers-reduced-motion:reduce){ .tv-credits .roll{animation:none; position:static;} }
+
+
+/* ── story page ── */
+.story{max-width:660px;}
+.story h1{font-size:26px; letter-spacing:3px; margin-bottom:2px;}
+.story-sub{color:var(--dim); font-size:12px; letter-spacing:2px; margin-bottom:8px;}
+.story h2{color:var(--grn); font-size:14px; letter-spacing:1px; margin:32px 0 10px; font-weight:500;}
+.story p{margin:0 0 14px; line-height:1.85; color:#c7ccd6;}
+.story hr{border:none; border-top:1px solid var(--line); margin:22px auto; width:38%;}
+.story em{color:#e8e4d8; font-style:italic;}
+.story strong{color:#fff; font-weight:500;}
