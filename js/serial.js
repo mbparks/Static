@@ -82,3 +82,65 @@ const StaticSerial = (() => {
 
   return { supported, connect, disconnect, identify, consecrate, readSoul };
 })();
+
+// =====================================================================
+//  StaticDock — a PERSISTENT console<->dock link (distinct from the
+//  one-shot Forge provisioning above). The console keeps this open for
+//  a whole session, streaming addressed events to the player Shards and
+//  receiving their pad inputs. Play link: WIP, but functional.
+//
+//  Console -> dock:  TO|<name>|<frame>   ALL|<frame>   ROSTER?
+//  Dock -> console:  SHARDS|a,b,c        IN|<name>|<msg>   LOG|...
+// =====================================================================
+const StaticDock = (() => {
+  let port=null, reader=null, writer=null, buf='', reading=false;
+  let onInput=null, onRoster=null, onLog=null;
+  const enc=new TextEncoder(), dec=new TextDecoder();
+
+  async function connect(cbs={}) {
+    onInput=cbs.onInput; onRoster=cbs.onRoster; onLog=cbs.onLog;
+    port = await navigator.serial.requestPort();
+    await port.open({ baudRate:115200 });
+    writer = port.writable.getWriter();
+    reader = port.readable.getReader();
+    reading = true;
+    pump();                       // background read loop
+    await send('ROSTER?');
+    return true;
+  }
+  async function disconnect() {
+    reading=false;
+    try{ if(reader){ await reader.cancel(); reader.releaseLock(); } }catch(e){}
+    try{ if(writer) writer.releaseLock(); }catch(e){}
+    try{ if(port) await port.close(); }catch(e){}
+    port=reader=writer=null; buf='';
+  }
+  async function pump() {
+    while (reading) {
+      let res;
+      try { res = await reader.read(); } catch(e){ break; }
+      if (res.done) break;
+      if (res.value) buf += dec.decode(res.value);
+      let nl;
+      while ((nl = buf.indexOf('\n')) >= 0) {
+        const line = buf.slice(0,nl).trim(); buf = buf.slice(nl+1);
+        if (!line) continue;
+        if (line.startsWith('IN|')) {
+          const p = line.split('|');           // IN|name|msg
+          onInput && onInput(p[1], p.slice(2).join('|'));
+        } else if (line.startsWith('SHARDS|')) {
+          onRoster && onRoster(line.slice(7).split(',').filter(Boolean));
+        } else if (line.startsWith('LOG|')) {
+          onLog && onLog(line.slice(4));
+        }
+      }
+    }
+  }
+  async function send(line) { if (writer) await writer.write(enc.encode(line+'\n')); }
+  async function to(name, frame)  { await send('TO|'+name+'|'+frame); }
+  async function all(frame)       { await send('ALL|'+frame); }
+  async function roster()         { await send('ROSTER?'); }
+  const connected = () => !!port;
+
+  return { supported:()=>'serial' in navigator, connect, disconnect, to, all, roster, connected };
+})();

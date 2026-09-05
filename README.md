@@ -177,16 +177,49 @@ Still maturing (flagged WIP in the code):
 
 ## Roadmap
 
-1. **Firmware v0** — *in progress.* WIP Arduino sketches now live under
-   `firmware/` (Shard renderer + GM dock bridge), with the device contract
-   ported byte-for-byte from `js/device.js`. Not yet: NVS soul, signing,
-   ledger, multi-Shard addressing.
-2. ~~NVS soul: the Forge writes genesis over serial; the Shard loads it on
-   boot.~~ **DONE** — consecration works over Web Serial end to end.
-3. Dock bridge + signed event protocol (rulebook Part Three schemas on the
-   wire).
-4. Campaign file import/export in the console (the authoring promise).
-5. Rulebook to v1.0: Part Three chapter 6, cant & chrome catalogs, prices.
+### Done
+- The full game as a document: rulebook, world, six classes, the session
+  walkthrough, GM tools, seeds, deep lore, and the hardware appendix.
+- The browser layer: Forge, Record, GM console, projected table view, and the
+  rulebook — one static site, no server, drops into any subfolder.
+- Real character consecration: the Forge writes a soul to a blank ESP32 Shard
+  over Web Serial and the ring ignites in the name's order, on the desk. The
+  Record reads it back. Browser and firmware compute that order identically
+  (verified).
+- WIP firmware for both devices, with the device contract shared byte-for-byte
+  with the website.
+- The live play link: the GM console connects to a dock over Web Serial and
+  drives real Shard rings during a session — addressed per token, with the
+  Shards' pad inputs (yank, tap) flowing back into the record. Multi-Shard
+  routing in the dock firmware.
+- A parametric, printable token base (`docs/hardware/shard-base.scad`) and a
+  bill of materials (`docs/hardware/BOM.md`).
+
+### Next — first real hardware session
+1. **Build one.** Source the parts (`docs/hardware/BOM.md`), print the base
+   (`docs/hardware/shard-base.scad`), flash the firmware, consecrate it in the
+   Forge. First physical Shard.
+2. **Bench playtest with lit rings.** Connect the dock in the console
+   (**CONNECT DOCK**), run a session driving real rings, and patch whatever the
+   lights reveal that paper hid. Tune brightness and touch thresholds per board.
+3. **Harden the play link.** Reconnection, per-Shard input tagging on the dock
+   (v0 tags best-effort), and cleaner roster handling under drops.
+
+### Later — trust, authoring, and polish
+5. **Signing and the ledger.** Console signs events; devices verify; the
+   append-only record and death-lock persist and survive a foreign console —
+   the provenance promise, made real. (Design is in Part Three ch.0.)
+6. **Witnesses and bonds.** First-jack-in co-signing and base-to-base trade —
+   the first true multi-Shard transactions.
+7. **Console authoring / campaign files.** Import and export the content pack
+   (tags, nodes, ice, enemies, classes) so GMs build and trade their own
+   worlds — the chapter 0 authoring promise as a feature.
+8. **Rulebook to v1.0.** Part Three chapter 6 (campaigns / organized play),
+   the cant and chrome catalogs, and prices.
+
+### Always
+- Keep the paper game whole. Every device is amplification; the fiction
+  outranks the machine, and any layer can fall back to cards and dice.
 
 ## Hardware
 

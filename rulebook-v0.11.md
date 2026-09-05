@@ -2001,7 +2001,8 @@ A Shard is a small ESP32 built into a miniature's base, with an LED ring around
 the rim, a rechargeable battery, and a single touch pad. The figure keys onto a
 printed lid that diffuses the ring; the board and battery nest in the printed
 base below. Assembled top to bottom, the layers are: figure, lid, ring, board,
-battery, base.
+battery, base. Printable files (`shard-base.scad` and ready-to-slice STLs)
+live in `docs/hardware/`.
 
 ![Exploded view of a player token](docs/hardware/exploded.svg)
 

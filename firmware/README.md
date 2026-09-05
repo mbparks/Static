@@ -48,7 +48,8 @@ laptop's USB and only relays.
 - No signing or verification — v0 trusts the BLE link. Real builds must verify
   a hub signature before acting on any event, and never trust an unsigned one.
 - No on-device keys, no ledger, no persistent death-lock.
-- Dock talks to ONE Shard; multi-Shard addressing is the next milestone.
+- ~~Dock talks to ONE Shard~~ — DONE: the dock connects to several Shards and
+  routes events by character name; the console drives them live.
 - No base-to-base trade.
 
 ## Roadmap (matches the project README)

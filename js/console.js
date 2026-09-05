@@ -38,7 +38,7 @@ function save(){
 function act(text, kind, fn){
   if (fn) fn();
   if (text) log(text, kind);
-  save(); broadcast(); render();
+  save(); broadcast(); dockSyncAll(false); render();
 }
 function log(text, kind){
   S.log.push({ t:new Date().toTimeString().slice(0,5), text, kind:kind||'' });
@@ -59,6 +59,68 @@ function publicSlice(){
   };
 }
 function broadcast(){ bc.postMessage({ type:'state', pub:publicSlice() }); }
+
+// ---- live play link to a physical dock (WIP) -------------------------
+let dockOn = false;
+let dockRoster = [];
+const dockLast = {};   // per-name: last frame we sent, to send edges only
+
+async function dockConnect(){
+  if (!StaticDock.supported()){ log('this browser has no Web Serial','warn'); render(); return; }
+  try {
+    await StaticDock.connect({
+      onRoster: names => { dockRoster = names; render(); },
+      onInput: (name, msg) => {
+        // a Shard's pad: forward its intent into the session
+        const pc = S.pcs.find(p => p.name === name);
+        if (!pc) return;
+        if (msg === 'YANK'){
+          act(`${pc.name} yanks (from the Shard) — purged, +1 static`, 'pur', () => {
+            pc.fx=[]; pc.static=Math.min(10,pc.static+1); S.flags[pc.id]=true;
+          });
+        } else if (msg === 'TAP'){
+          log(`${pc.name} taps in`, '');
+          save(); render();
+        }
+      },
+      onLog: t => { /* dock chatter; ignore in UI */ }
+    });
+    dockOn = true;
+    log('dock connected — rings are live', 'good');
+    dockSyncAll(true);
+    render();
+  } catch(e){ log('no dock connected','warn'); render(); }
+}
+async function dockDisconnect(){ await StaticDock.disconnect(); dockOn=false; dockRoster=[]; render(); }
+
+// map a PC to its ring frames and send only what changed
+function pcStateFrame(p){
+  return `STATE|${p.hp}|${p.maxhp}|${p.static}|${p.down||0}`;
+}
+function pcFxFrame(p){
+  const f = p.fx.length ? p.fx[0].name.toUpperCase().split(' ')[0] : 'CLEAR';
+  // normalize to the firmware's FX vocabulary
+  const map = { SCRAMBLER:'ICE', TRACKER:'TRACK', THE:'HUSH', PUPPET:'ICE' };
+  return 'FX|' + (map[f] || (f==='CLEAR'?'CLEAR':'ICE'));
+}
+async function dockSyncAll(force){
+  if (!dockOn) return;
+  const acting = S.combat.active ? find(S.combat.order[S.combat.turn]) : null;
+  for (const p of S.pcs){
+    const key = p.name;
+    const st = pcStateFrame(p), fx = pcFxFrame(p);
+    const prev = dockLast[key] || {};
+    try {
+      if (force || prev.st !== st) { await StaticDock.to(p.name, st); prev.st = st; }
+      if (force || prev.fx !== fx) { await StaticDock.to(p.name, fx); prev.fx = fx; }
+      if (p.dead && !prev.locked){ await StaticDock.to(p.name, 'LOCK'); prev.locked = true; }
+      if (acting && acting.id === p.id && prev.turn !== S.combat.turn){
+        await StaticDock.to(p.name, 'TURN'); prev.turn = S.combat.turn;
+      }
+      dockLast[key] = prev;
+    } catch(e){ /* link hiccup; next act() retries */ }
+  }
+}
 function flash(kind, kicker, text){ bc.postMessage({ type:'flash', kind, kicker, text }); }
 bc.onmessage = e => { if (e.data && e.data.type==='hello') broadcast(); };
 
@@ -313,6 +375,8 @@ function render(){
   $('log').innerHTML = S.log.slice(-40).reverse().map(l => `<div class="${l.kind}">${l.t} ${l.text}</div>`).join('');
   renderResolve();
   renderCombatControls();
+  const db = document.getElementById('connect-dock');
+  if (db) db.textContent = dockOn ? ('DOCK: ' + (dockRoster.length ? dockRoster.length + ' live' : 'no shards')) : 'CONNECT DOCK';
 }
 
 /* ── top bar ── */
@@ -320,6 +384,7 @@ $('scene-name').addEventListener('change', () => act(null,'',() => S.scene = $('
 $('mode-ambient').addEventListener('click', () => act(null,'',() => S.mode='ambient'));
 $('mode-scene').addEventListener('click', () => act(null,'',() => S.mode='scene'));
 $('open-table').addEventListener('click', () => { window.open('table.html','static-table','width=1024,height=640'); setTimeout(broadcast, 600); });
+$('connect-dock').addEventListener('click', () => { dockOn ? dockDisconnect() : dockConnect(); });
 
 $('btn-says').addEventListener('click', () => {
   const t = $('gm-says').value.trim(); if (!t) return;
