@@ -3,100 +3,145 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>THE CONSOLE — STATIC</title>
 <link rel="icon" type="image/png" href="docs/sigils/favicon.png">
+<title>The Console — STATIC</title>
 <link rel="stylesheet" href="css/site.css">
 </head>
-<body>
-<div class="wrap" style="max-width:1100px;">
-  <div class="con-top">
-    <div>
-      <a class="footnote" href="index.html" style="text-decoration:none;">&larr; STATIC</a>
-      <span class="t" style="margin-left:12px;">THE CONSOLE</span>
-    </div>
-    <div class="minibtns">
-      <input id="scene-name" placeholder="scene — where and when" aria-label="Scene name">
-      <button id="mode-ambient">AMBIENT</button>
-      <button id="mode-scene">SCENE</button>
-      <button id="mode-combat" disabled title="starts with initiative">COMBAT</button>
-      <button id="connect-dock">CONNECT DOCK</button>
-      <button class="primary" id="open-table">OPEN TABLE VIEW</button>
-    </div>
-  </div>
+<body class="con">
+<div class="con-app">
 
-  <div class="con-grid">
-    <!-- ── column: the table ── -->
-    <div class="col">
-      <h4>PARTY</h4>
-      <div id="party"></div>
-      <div class="minibtns">
-        <button id="add-effigy" title="reads the soul the Forge left in this browser">+ FROM EFFIGY</button>
-        <select id="add-cls" aria-label="Class for new character"></select>
-        <input id="add-name" placeholder="name" style="width:90px;" aria-label="New character name">
-        <button id="add-pc">+ ADD</button>
-      </div>
-      <h4>OPPOSITION</h4>
-      <div id="opposition"></div>
-      <div class="minibtns">
-        <select id="add-foe" aria-label="Enemy type"></select>
-        <button id="add-enemy">+ ADD</button>
-      </div>
-      <h4>ZONES</h4>
-      <div id="zones"></div>
-      <div class="minibtns"><button id="add-zone">+ ZONE</button></div>
+  <!-- ── top bar ── -->
+  <header class="con-bar">
+    <a class="con-home" href="index.html" title="STATIC">
+      <svg viewBox="0 0 200 200" width="26" height="26" aria-hidden="true"><polygon points="100,34 157,67 157,133 100,166 43,133 43,67" fill="none" stroke="#5dcaa5" stroke-width="10"/><circle cx="100" cy="100" r="8" fill="#e6e2d6"/></svg>
+    </a>
+    <div class="con-title">
+      <span class="con-wordmark">The Console</span>
+      <input id="scene-name" class="con-scene" placeholder="Name the scene — where and when" aria-label="Scene name">
     </div>
 
-    <!-- ── column: resolve ── -->
-    <div class="col">
-      <h4>RESOLVE</h4>
-      <div id="resolve"></div>
-      <h4>COMBAT</h4>
-      <div class="minibtns" id="combat-controls"></div>
-      <h4>HEAT</h4>
-      <div class="heatbar" id="heatbar"></div>
-      <div class="minibtns">
-        <button id="heat-up">+1 HEAT</button>
-        <button id="heat-dn">\u22121</button>
-        <span id="heat-note" class="footnote" style="align-self:center;"></span>
-      </div>
-      <h4>CLOCKS</h4>
-      <div id="clocks"></div>
-      <div class="minibtns">
-        <input id="clock-name" placeholder="what approaches" style="width:130px;" aria-label="Clock name">
-        <select id="clock-segs" aria-label="Clock segments"><option>4</option><option>6</option><option>8</option></select>
-        <label style="color:var(--dim); font-size:10px; align-self:center;"><input type="checkbox" id="clock-pub" checked> public</label>
-        <button id="add-clock">+ CLOCK</button>
-      </div>
-    </div>
+    <nav class="con-modes" aria-label="Console mode">
+      <button id="mode-setup" class="mode">Setup</button>
+      <button id="mode-scene" class="mode">Scene</button>
+      <button id="mode-combat" class="mode">Combat</button>
+    </nav>
 
-    <!-- ── column: the record ── -->
-    <div class="col">
-      <h4>THE RECORD (this session)</h4>
-      <div class="loglist" id="log"></div>
-      <div class="minibtns" style="margin-top:8px;">
-        <input id="gm-says" placeholder="GM says\u2026" style="width:170px;" aria-label="GM ruling text">
-        <button id="btn-says">RULE</button>
-      </div>
-      <h4>CAMPAIGN</h4>
-      <div id="campaign-info" class="footnote" style="text-align:left; margin-bottom:6px;"></div>
-      <div class="minibtns">
-        <button id="camp-export">EXPORT PACK</button>
-        <button id="camp-import">IMPORT…</button>
-        <button id="camp-reset" title="back to the built-in Six Houses">RESET</button>
-        <input id="camp-file" type="file" accept="application/json,.json" style="display:none">
-      </div>
-      <h4>SESSION</h4>
-      <div class="minibtns">
-        <label style="color:var(--dim); font-size:10px; align-self:center;"><input type="checkbox" id="job-settled"> the job settled</label>
-        <button id="end-session">JACK OUT</button>
-        <button class="danger" id="wipe" title="clears saved console state">NEW SESSION</button>
-      </div>
-      <div class="footnote" id="save-note" style="text-align:left;"></div>
+    <div class="con-right">
+      <button id="connect-dock" class="pill" title="Drive real Shard rings over the dock">Connect dock</button>
+      <button id="open-table" class="pill primary" title="Open the projected table view in a new window">Table view</button>
+      <details class="con-menu">
+        <summary aria-label="More">&#8943;</summary>
+        <div class="con-menu-body">
+          <button id="mode-ambient">Projector: ambient</button>
+          <div class="sep"></div>
+          <div id="campaign-info" class="menu-note"></div>
+          <button id="camp-export">Export campaign pack</button>
+          <button id="camp-import">Import campaign pack…</button>
+          <button id="camp-reset">Reset to the Six Houses</button>
+          <input id="camp-file" type="file" accept="application/json,.json" hidden>
+          <div class="sep"></div>
+          <label class="menu-check"><input type="checkbox" id="job-settled"> The job settled this session</label>
+          <button id="end-session" class="menu-strong">Jack out — end the session</button>
+          <button id="wipe" class="menu-danger">New session (clears saved state)</button>
+          <div id="save-note" class="menu-note"></div>
+        </div>
+      </details>
     </div>
-  </div>
+  </header>
+
+  <!-- ── three columns ── -->
+  <main class="con-grid">
+
+    <!-- THE TABLE -->
+    <section class="col col-table">
+      <div class="panel">
+        <div class="panel-head"><span>The crew</span></div>
+        <div id="party" class="crew"></div>
+        <details class="adder only-setup only-scene">
+          <summary>Add a character</summary>
+          <div class="adder-body">
+            <button id="add-effigy" class="pill" title="Load the soul the Forge left in this browser">From the Forge (effigy)</button>
+            <div class="row">
+              <select id="add-cls" aria-label="Class"></select>
+              <input id="add-name" placeholder="Name" aria-label="Name">
+              <button id="add-pc" class="pill">Add</button>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="panel only-setup only-combat">
+        <div class="panel-head"><span>Opposition</span></div>
+        <div id="opposition" class="crew"></div>
+        <details class="adder">
+          <summary>Add an enemy</summary>
+          <div class="adder-body row">
+            <select id="add-foe" aria-label="Enemy"></select>
+            <button id="add-enemy" class="pill">Add</button>
+          </div>
+        </details>
+      </div>
+
+      <div class="panel only-setup">
+        <div class="panel-head"><span>Zones</span><button id="add-zone" class="tiny">+ zone</button></div>
+        <div id="zones" class="zones"></div>
+      </div>
+    </section>
+
+    <!-- RESOLVE -->
+    <section class="col col-resolve">
+      <div id="combat-hero" class="hero only-combat"></div>
+      <div id="combat-controls" class="combat-controls only-combat"></div>
+
+      <div id="zonemap" class="zonemap only-combat"></div>
+
+      <div class="panel">
+        <div class="panel-head"><span>Resolve</span></div>
+        <div id="resolve"></div>
+      </div>
+
+      <div class="panel only-scene only-combat">
+        <div class="panel-head"><span>Heat</span><span id="heat-note" class="head-note"></span></div>
+        <div class="heat">
+          <div class="heatbar" id="heatbar"></div>
+          <div class="heat-btns">
+            <button id="heat-dn" class="tiny" aria-label="Lower heat">&minus;</button>
+            <button id="heat-up" class="tiny" aria-label="Raise heat">+ heat</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel only-scene">
+        <div class="panel-head"><span>Clocks</span></div>
+        <div id="clocks" class="clocks"></div>
+        <details class="adder">
+          <summary>Add a clock</summary>
+          <div class="adder-body row">
+            <input id="clock-name" placeholder="What approaches" aria-label="Clock name">
+            <select id="clock-segs" aria-label="Segments"><option>4</option><option>6</option><option>8</option></select>
+            <label class="chk"><input type="checkbox" id="clock-pub" checked> shown on the table</label>
+            <button id="add-clock" class="pill">Add</button>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- THE RECORD -->
+    <section class="col col-record">
+      <div class="panel panel-fill">
+        <div class="panel-head"><span>The record</span></div>
+        <div id="log" class="loglist"></div>
+        <div class="row rule-row">
+          <input id="gm-says" placeholder="Make a ruling…" aria-label="GM ruling">
+          <button id="btn-says" class="pill">Rule</button>
+        </div>
+      </div>
+    </section>
+  </main>
 </div>
 <script src="js/content.js"></script>
 <script src="js/campaign.js"></script>
+<script src="js/serial.js"></script>
 <script src="js/console.js"></script>
 </body>
 </html>

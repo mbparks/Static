@@ -127,6 +127,63 @@ bc.onmessage = e => { if (e.data && e.data.type==='hello') broadcast(); };
 function find(id){ return S.pcs.find(c=>c.id===id) || S.foes.find(c=>c.id===id); }
 function isPC(c){ return S.pcs.includes(c); }
 
+/* ── console UI mode (what the GM is doing), separate from the projector mode ── */
+let uiMode = 'setup';
+function setUiMode(m){ uiMode = m; document.body.dataset.uimode = m; render(); }
+
+/* ── the crew as living rings ── */
+function hpState(c){
+  return c.dead ? 'dead' : c.down ? 'down' : c.hp <= Math.ceil(c.maxhp/3) ? 'critical' : c.hp < c.maxhp ? 'wounded' : 'fine';
+}
+function ringSVG(c, size){
+  const N = 24, R = 13, cx = 17, cy = 17;
+  const st = hpState(c);
+  const iced = c.fx && c.fx.length && !c.down && !c.dead;
+  const base = st==='fine' ? '#5dcaa5' : st==='wounded' ? '#f0a02a' : st==='critical' ? '#e8402a' : '#232838';
+  let dots = '';
+  for (let i=0;i<N;i++){
+    const a = (i/N)*Math.PI*2 - Math.PI/2;
+    const x = cx + Math.cos(a)*R, y = cy + Math.sin(a)*R;
+    let fill = base, op = 1;
+    if (st==='dead'){ fill='#1a1d26'; }
+    else if (st==='down'){ fill = (i % 8 === 0 && i/8 < (c.down||0)) ? '#a02218' : '#1a1d26'; }
+    else if (iced){ fill = '#e8f0ff'; op = (i*7)%5 ? 1 : .2; }
+    else if (c.static > 0 && ((i*11) % 30) < c.static){ fill='#9b6dd6'; }
+    dots += `<circle class="led" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2" fill="${fill}" opacity="${op}"/>`;
+  }
+  const cls = 'ring ' + (iced ? 'ice' : (st==='fine'||st==='wounded'||st==='critical') ? 'breathe '+st : st);
+  return `<svg class="${cls}" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15.5" fill="#0b0d12" stroke="#1b2030"/>${dots}</svg>`;
+}
+
+function renderZoneMap(){
+  const host = $('zonemap'); if (!host) return;
+  host.innerHTML = S.zones.map(z => {
+    const pcs = S.pcs.filter(p => p.zone===z.id && !p.dead);
+    const foes = S.foes.filter(f => f.zone===z.id && !f.dead);
+    return `<div class="zm">
+      <div class="zn">${z.name}</div>
+      ${z.tags.length ? `<div class="zt">${z.tags.join(' \u2022 ')}</div>` : ''}
+      <div class="occ">
+        ${pcs.map((p,i)=>`<span class="dot ${sel===p.id?'sel':''} ${p.down?'down':''}" data-sel="${p.id}" title="${p.name}" style="background:${PCCOLORS[S.pcs.indexOf(p)%PCCOLORS.length]}"></span>`).join('')}
+        ${foes.map(f=>`<span class="foe ${f.revealed?'revealed':''} ${sel===f.id?'sel':''}" data-sel="${f.id}" title="${f.name}${f.revealed?'':' (unrevealed)'}"></span>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderHero(){
+  const host = $('combat-hero'); if (!host) return;
+  if (!S.combat.active){
+    host.className = 'hero only-combat idle';
+    host.innerHTML = `<div><div class="round">Combat</div><div class="who">${S.combat.setup ? 'Enter each initiative on the crew, then start.' : 'No fight yet. Roll initiative when it starts.'}</div></div>`;
+    return;
+  }
+  const c = find(S.combat.order[S.combat.turn]);
+  host.className = 'hero only-combat';
+  host.innerHTML = `<div><div class="round">Round ${S.round}</div><div class="who">${c ? c.name : '\u2014'}<small>acts</small></div></div>
+    <div class="round">heat ${S.heat}</div>`;
+}
+
 /* ── party & opposition ── */
 function addPC(name, clsId){
   const cls = CONTENT.classes.find(c=>c.id===clsId);
@@ -184,34 +241,28 @@ $('add-clock').addEventListener('click', () => {
 function renderCombatControls(){
   const host = $('combat-controls'); host.innerHTML='';
   if (!S.combat.active && !S.combat.setup){
-    host.innerHTML = `<button id="c-setup">ROLL INITIATIVE</button>`;
+    host.innerHTML = `<button id="c-setup" class="big primary">Roll initiative</button>`;
     $('c-setup').addEventListener('click', () => act('initiative called','',() => { S.combat.setup=true; }));
   } else if (S.combat.setup){
-    host.innerHTML = `<span class="footnote" style="align-self:center;">enter each roll on the rows, then</span> <button class="primary" id="c-start">START COMBAT</button>`;
+    host.innerHTML = `<button class="big primary" id="c-start">Start combat</button><div class="note">Enter each roll on the crew and opposition rows first.</div>`;
     $('c-start').addEventListener('click', () => {
       const all = [...S.pcs.filter(p=>!p.dead), ...S.foes.filter(f=>!f.dead)];
       all.sort((a,b)=>b.init-a.init);
-      act('combat — round 1','warn',() => {
-        S.combat = {active:true, setup:false, order:all.map(c=>c.id), turn:0};
-        S.round = 1; S.mode='combat';
-      });
+      act('combat \u2014 round 1','warn',() => { S.combat = {active:true, setup:false, order:all.map(c=>c.id), turn:0}; S.round = 1; S.mode='combat'; });
       const first = find(S.combat.order[0]);
       if (first) flash('turn','ROUND 1', first.name);
+      setUiMode('combat');
     });
   } else {
-    host.innerHTML = `<button class="primary" id="c-next">NEXT TURN</button>
-      <button id="c-sweep">THE SWEEP</button>
-      <button id="c-end">END COMBAT</button>`;
+    host.innerHTML = `<button class="big primary" id="c-next">Next turn</button>
+      <button class="big" id="c-sweep">The sweep</button>
+      <button class="big quiet" id="c-end">End combat</button>`;
     $('c-next').addEventListener('click', () => {
-      act(null,'',() => {
-        do { S.combat.turn = (S.combat.turn+1) % S.combat.order.length; }
-        while (find(S.combat.order[S.combat.turn]).dead);
-      });
-      const c = find(S.combat.order[S.combat.turn]);
-      flash('turn','', c.name);
+      act(null,'',() => { do { S.combat.turn = (S.combat.turn+1) % S.combat.order.length; } while (find(S.combat.order[S.combat.turn]).dead); });
+      const c = find(S.combat.order[S.combat.turn]); flash('turn','', c.name);
     });
     $('c-sweep').addEventListener('click', sweep);
-    $('c-end').addEventListener('click', () => act('combat ends','',() => { S.combat={active:false,setup:false,order:[],turn:-1}; S.mode='scene'; }));
+    $('c-end').addEventListener('click', () => { act('combat ends','',() => { S.combat={active:false,setup:false,order:[],turn:-1}; S.mode='scene'; }); setUiMode('scene'); });
   }
 }
 function sweep(){
@@ -235,28 +286,30 @@ function sweep(){
 function renderResolve(){
   const host = $('resolve');
   const c = sel ? find(sel) : null;
-  if (!c){ host.innerHTML = `<div class="footnote" style="text-align:left;">choose a combatant on the left. the machine never wins an argument with the table — every button here is a ruling.</div>`; return; }
+  if (!c){ host.innerHTML = `<div class="resolve-empty">Choose someone on the table to resolve against them. Every button here is a ruling \u2014 the machine never wins an argument with the table.</div>`; return; }
   const pc = isPC(c);
   pendingDeath = pendingDeath===c.id ? pendingDeath : null;
-  let h = `<div class="resolve-target"><span class="nm">${c.name}</span>
-    <div class="st">HP ${c.hp}/${c.maxhp}${pc?` · FW ${c.fw} · Static ${c.static}`:c.fw===null?' · not a node':` · FW ${c.fw}`}${c.fx.length?` · <span class="fx">${c.fx.map(f=>f.name).join(', ')}</span>`:''}</div>
-    ${!pc?`<div class="st">${c.move} · wants ${c.want}</div>`:''}</div>`;
-  h += `<div class="minibtns">
-    <button data-a="dmg1">HIT 1</button><button data-a="dmg2">HIT 2</button><button data-a="dmg3">HIT 3</button>
-    <button data-a="heal">HEAL 1d6</button></div>`;
-  if (pc) h += `<div class="minibtns">
-    <select id="ice-pick">${CONTENT.ice.map(i=>`<option value="${i.id}">${i.name}</option>`).join('')}</select>
-    <button data-a="ice">ICE THEM</button>
-    <button data-a="yank" ${c.fx.length?'':'disabled'}>YANK</button>
-    <button data-a="static">+1 STATIC</button></div>`;
-  h += `<div class="minibtns">
-    <select id="zone-pick">${S.zones.map(z=>`<option value="${z.id}" ${z.id===c.zone?'selected':''}>${z.name}</option>`).join('')}</select>
-    ${!pc?`<button data-a="reveal">${c.revealed?'HIDE':'REVEAL'}</button>`:''}
-    ${pc?`<button data-a="oath">OATH\u2026</button>`:''}
-    ${pendingDeath===c.id
-      ? `<button class="danger" data-a="confirm-death">CONFIRM THE DEATH RECORD</button>`
-      : `<button class="danger" data-a="death">SAY IT ALOUD FIRST</button>`}
-  </div>`;
+  let h = `<div class="resolve-target">${ringSVG(c)}<div>
+      <div class="nm">${c.name}</div>
+      <div class="st">HP ${c.hp}/${c.maxhp}${pc?` \u00b7 firewall ${c.fw} \u00b7 static ${c.static}`:c.fw===null?' \u00b7 not a node':` \u00b7 firewall ${c.fw}`}${c.fx.length?` \u00b7 <span class="fx">${c.fx.map(f=>f.name.toLowerCase()).join(', ')}</span>`:''}</div>
+      ${!pc?`<div class="want">${c.move} \u2014 wants ${c.want}</div>`:''}
+    </div></div>
+    <div class="actions">
+      <div class="group"><span class="lbl">Hit</span><span class="seg"><button data-a="dmg1">1</button><button data-a="dmg2">2</button><button data-a="dmg3">3</button></span><button data-a="heal">Heal 1d6</button></div>`;
+  if (pc) h += `<div class="group"><span class="lbl">Mesh</span>
+      <select id="ice-pick">${CONTENT.ice.map(i=>`<option value="${i.id}">${i.name}</option>`).join('')}</select>
+      <button data-a="ice">Ice them</button>
+      <button data-a="yank" ${c.fx.length?'':'disabled'}>Yank</button>
+      <button data-a="static">+1 static</button></div>`;
+  h += `<div class="group"><span class="lbl">Place</span>
+      <select id="zone-pick">${S.zones.map(z=>`<option value="${z.id}" ${z.id===c.zone?'selected':''}>${z.name}</option>`).join('')}</select>
+      ${!pc?`<button data-a="reveal">${c.revealed?'Hide':'Reveal'}</button>`:''}
+      ${pc?`<button class="oath" data-a="oath">Swear an oath\u2026</button>`:''}</div>
+    <div class="group"><span class="lbl">Death</span>
+      ${pendingDeath===c.id
+        ? `<button class="danger armed" data-a="confirm-death">Confirm the death record</button>`
+        : `<button class="danger" data-a="death">Say it aloud first</button>`}
+    </div></div>`;
   host.innerHTML = h;
   host.querySelectorAll('[data-a]').forEach(b => b.addEventListener('click', () => resolveAction(b.dataset.a, c)));
   const zp = host.querySelector('#zone-pick');
@@ -320,18 +373,20 @@ function zoneName(id){ const z = S.zones.find(z=>z.id===id); return z ? z.name :
 function crowHTML(c, i){
   const acting = S.combat.active && S.combat.order[S.combat.turn]===c.id;
   const initInput = S.combat.setup && !c.dead ? `<input class="init" data-init="${c.id}" type="number" value="${c.init||''}" placeholder="init" aria-label="initiative for ${c.name}">` : '';
-  const dot = isPC(c) ? `<i style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${PCCOLORS[i%PCCOLORS.length]};margin-right:5px;"></i>` : '';
   const state = c.dead ? 'the record is sealed'
-    : c.down ? `DOWN — ${c.down} ember${c.down===1?'':'s'}`
-    : `HP ${c.hp}/${c.maxhp}` + (isPC(c) ? ` · FW ${c.fw} · St ${c.static}` : c.revealed ? ' · revealed' : ' · unrevealed');
+    : c.down ? `down \u2014 ${c.down} ember${c.down===1?'':'s'}`
+    : `HP ${c.hp}/${c.maxhp}` + (isPC(c) ? ` \u00b7 FW ${c.fw} \u00b7 static ${c.static}` : c.revealed ? ' \u00b7 revealed' : ' \u00b7 unrevealed');
+  const fx = c.fx.length ? ` <span class="fx">${c.fx.map(f=>f.name.toLowerCase()).join(', ')}</span>` : '';
   return `<div class="crow ${sel===c.id?'sel':''} ${c.dead?'dead':''} ${acting?'acting':''}" data-sel="${c.id}" tabindex="0">
-    <span class="nm">${dot}${c.name}</span>${initInput}
-    <div class="st">${state}${c.fx.length?` · <span class="fx">${c.fx.map(f=>f.name.toLowerCase()).join(', ')}</span>`:''} · ${zoneName(c.zone)}</div>
+    ${ringSVG(c)}
+    <div><div class="nm">${c.name}</div><div class="st">${state}${fx}</div></div>
+    <div><div class="zone">${zoneName(c.zone)}</div>${initInput}</div>
   </div>`;
 }
 function render(){
-  $('party').innerHTML = S.pcs.map((p,i)=>crowHTML(p,i)).join('') || '<div class="footnote" style="text-align:left;">no crew yet.</div>';
-  $('opposition').innerHTML = S.foes.map(f=>crowHTML(f,0)).join('') || '<div class="footnote" style="text-align:left;">the ruins are quiet. for now.</div>';
+  $('party').innerHTML = S.pcs.map((p,i)=>crowHTML(p,i)).join('') || '<div class="crew-empty">No crew yet. Add a character below.</div>';
+  $('opposition').innerHTML = S.foes.map(f=>crowHTML(f,0)).join('') || '<div class="crew-empty">The ruins are quiet. For now.</div>';
+  renderZoneMap(); renderHero();
   document.querySelectorAll('[data-sel]').forEach(el => {
     el.addEventListener('click', e => { if (e.target.tagName!=='INPUT'){ sel = el.dataset.sel; render(); } });
     el.addEventListener('keydown', e => { if(e.key==='Enter'){ sel = el.dataset.sel; render(); } });
@@ -342,47 +397,57 @@ function render(){
   $('zones').innerHTML = S.zones.map(z => `
     <div class="zone-row" data-z="${z.id}">
       <input value="${z.name.replace(/"/g,'&quot;')}" data-zn="${z.id}" aria-label="zone name">
-      ${CONTENT.tags.map(t => `<span class="tagchip ${z.tags.includes(t.id)?'on':''}" data-tag="${z.id}:${t.id}" title="${t.desc}">${t.id}</span>`).join('')}
+      <div class="tags">${CONTENT.tags.map(t => `<span class="tagchip ${z.tags.includes(t.id)?'on':''}" data-tag="${z.id}:${t.id}" title="${t.desc}">${t.id}</span>`).join('')}</div>
     </div>`).join('');
   document.querySelectorAll('[data-zn]').forEach(inp =>
     inp.addEventListener('change', () => act(null,'',() => S.zones.find(z=>z.id===inp.dataset.zn).name = inp.value)));
   document.querySelectorAll('[data-tag]').forEach(ch =>
     ch.addEventListener('click', () => {
       const [zidv, tag] = ch.dataset.tag.split(':');
-      act(null,'',() => {
-        const z = S.zones.find(z=>z.id===zidv);
-        const i = z.tags.indexOf(tag);
-        if (i>-1) z.tags.splice(i,1); else z.tags.push(tag);
-      });
+      act(null,'',() => { const z = S.zones.find(z=>z.id===zidv); const i = z.tags.indexOf(tag); if (i>-1) z.tags.splice(i,1); else z.tags.push(tag); });
     }));
 
   $('heatbar').innerHTML = Array.from({length:7},(_,i)=>{
-    const on = i < S.heat;
-    const cls = !on ? '' : i>=6?'h3': i>=4?'h2':'h1';
+    const on = i < S.heat; const cls = !on ? '' : i>=6?'h3': i>=4?'h2':'h1';
     return `<span class="${cls}"></span>`;
   }).join('');
   $('heat-note').textContent = HEAT_NOTES[S.heat] || '';
 
-  $('clocks').innerHTML = S.clocks.map(c => `
-    <div class="clockrow"><span>${c.name} — ${c.fill}/${c.segs}${c.public?'':' · hidden'}</span>
-      <button data-tick="${c.id}">TICK</button></div>`).join('') || '<div class="footnote" style="text-align:left;">nothing approaches. yet.</div>';
+  $('clocks').innerHTML = S.clocks.map(c => clockRow(c)).join('') || '<div class="clocks-empty">Nothing approaches. Yet.</div>';
   document.querySelectorAll('[data-tick]').forEach(b =>
     b.addEventListener('click', () => {
       const c = S.clocks.find(x=>x.id===b.dataset.tick);
       act(c.fill+1>=c.segs ? `the clock fills: ${c.name}` : null, 'warn', () => c.fill = Math.min(c.segs, c.fill+1));
     }));
 
-  $('log').innerHTML = S.log.slice(-40).reverse().map(l => `<div class="${l.kind}">${l.t} ${l.text}</div>`).join('');
+  $('log').innerHTML = S.log.slice(-60).reverse().map(l => `<div class="${l.kind}"><span class="t">${l.t}</span>${l.text}</div>`).join('')
+    || '<div class="crew-empty">The record is blank. The night is young.</div>';
   renderResolve();
   renderCombatControls();
-  const db = document.getElementById('connect-dock');
-  if (db) db.textContent = dockOn ? ('DOCK: ' + (dockRoster.length ? dockRoster.length + ' live' : 'no shards')) : 'CONNECT DOCK';
+
+  // tabs + status pills
+  const tabs = {setup:'mode-setup', scene:'mode-scene', combat:'mode-combat'};
+  for (const [m,id] of Object.entries(tabs)){ const b=$(id); if(b){ b.classList.toggle('on', uiMode===m); b.classList.toggle('live', m==='combat' && S.combat.active); } }
+  const db = $('connect-dock');
+  if (db){ db.textContent = dockOn ? ('Dock: ' + (dockRoster.length ? dockRoster.length + ' live' : 'no shards')) : 'Connect dock'; db.classList.toggle('live', dockOn); }
+  if (typeof renderCampaignInfo === 'function') renderCampaignInfo();
+}
+
+function clockRow(c){
+  const r=13, cx=17, cy=17; let segs='';
+  for (let i=0;i<c.segs;i++){
+    const a0=(i/c.segs)*2*Math.PI-Math.PI/2, a1=((i+1)/c.segs)*2*Math.PI-Math.PI/2, large=(a1-a0)>Math.PI?1:0;
+    segs += `<path d="M${cx} ${cy} L${(cx+r*Math.cos(a0)).toFixed(1)} ${(cy+r*Math.sin(a0)).toFixed(1)} A${r} ${r} 0 ${large} 1 ${(cx+r*Math.cos(a1)).toFixed(1)} ${(cy+r*Math.sin(a1)).toFixed(1)} Z" fill="${i<c.fill?'#d85a30':'#1b2030'}" stroke="#11141b" stroke-width="1"/>`;
+  }
+  return `<div class="clockrow"><svg viewBox="0 0 34 34">${segs}</svg><span class="cname">${c.name} <span class="hid">${c.fill}/${c.segs}${c.public?'':' \u00b7 hidden'}</span></span><button class="tiny" data-tick="${c.id}">tick</button></div>`;
 }
 
 /* ── top bar ── */
 $('scene-name').addEventListener('change', () => act(null,'',() => S.scene = $('scene-name').value));
+$('mode-setup').addEventListener('click', () => setUiMode('setup'));
+$('mode-scene').addEventListener('click', () => { act(null,'',() => S.mode='scene'); setUiMode('scene'); });
+$('mode-combat').addEventListener('click', () => setUiMode('combat'));
 $('mode-ambient').addEventListener('click', () => act(null,'',() => S.mode='ambient'));
-$('mode-scene').addEventListener('click', () => act(null,'',() => S.mode='scene'));
 $('open-table').addEventListener('click', () => { window.open('table.html','static-table','width=1024,height=640'); setTimeout(broadcast, 600); });
 $('connect-dock').addEventListener('click', () => { dockOn ? dockDisconnect() : dockConnect(); });
 
@@ -415,6 +480,8 @@ StaticCampaign.boot();   // load any saved campaign pack over the built-in conte
 $('add-cls').innerHTML = CONTENT.classes.map(c=>`<option value="${c.id}">${c.name}</option>`).join('');
 $('add-foe').innerHTML = CONTENT.enemies.map(e=>`<option value="${e.id}">${e.name}</option>`).join('');
 $('scene-name').value = S.scene || '';
+uiMode = S.combat.active ? 'combat' : (S.pcs.length ? 'scene' : 'setup');
+document.body.dataset.uimode = uiMode;
 render(); broadcast();
 
 
