@@ -33,7 +33,7 @@ For local work: `python3 -m http.server` in this folder, then
 | `status.html` | "The Record." Shows a Shard its reflection — reads the effigy soul the Forge saved in this browser; will read real Shards when firmware lands. |
 | `console.html` | The GM's brain. Party & opposition, zones with tags, initiative rail, turns, the sweep (ember clocks), heat with thresholds, ice (clear paths enforced), the two-step death rite, oaths, rulings, clocks, and jack-out with the XP tally. Autosaves every event. |
 | `table.html` | The projected view. A dumb renderer: ambient / scene / combat modes, flash takeovers (ice, downs, oaths, deaths), end-credits roll. Open it from the console ("OPEN TABLE VIEW") and drag it to the external display. |
-| `book.html` | The full rulebook, rendered. Regenerated from `rulebook-v0.10.md`, which ships alongside as the source of truth. |
+| `book.html` | The full rulebook, rendered. Regenerated from `rulebook-v0.11.md`, which ships alongside as the source of truth. |
 
 ## Architecture
 
@@ -59,6 +59,8 @@ console.html ──BroadcastChannel──▶ table.html      (filtered public sl
   holds no state and only ever receives a filtered slice (hidden enemies and
   FOLD tags are never broadcast — filtering is structural, not cosmetic).
 - **`css/site.css`** — one theme for every page.
+- **`firmware/`** — WIP Arduino (ESP32) sketches: `shard/`, `dock/`, and
+  `shared/static_contract.h` (the byte-identical port of `device.js`).
 
 ### Data flow & storage
 
@@ -92,12 +94,16 @@ Stubbed, awaiting **firmware v0** on real ESP32 hardware:
 
 ## Roadmap
 
-1. **Firmware v0** — port `device.js` to the ESP32; unconsecrated state,
-   serial handshake, the ring (ignite / breathe / ice / yank / lock).
-2. Dock bridge + signed event protocol (rulebook Part Three schemas on the
+1. **Firmware v0** — *in progress.* WIP Arduino sketches now live under
+   `firmware/` (Shard renderer + GM dock bridge), with the device contract
+   ported byte-for-byte from `js/device.js`. Not yet: NVS soul, signing,
+   ledger, multi-Shard addressing.
+2. ~~NVS soul: the Forge writes genesis over serial; the Shard loads it on
+   boot.~~ **DONE** — consecration works over Web Serial end to end.
+3. Dock bridge + signed event protocol (rulebook Part Three schemas on the
    wire).
-3. Campaign file import/export in the console (the authoring promise).
-4. Rulebook to v1.0: Part Three chapter 6, cant & chrome catalogs, prices.
+4. Campaign file import/export in the console (the authoring promise).
+5. Rulebook to v1.0: Part Three chapter 6, cant & chrome catalogs, prices.
 
 ## Concept mockups
 
@@ -150,7 +156,7 @@ per House; drawn as pages from a Recollection field guide.
 
 ## The book
 
-`rulebook-v0.10.md` is canonical. `book.html` is generated from it. If you
+`rulebook-v0.11.md` is canonical. `book.html` is generated from it. If you
 edit the rules, edit the markdown and regenerate — the rendered page is a
 build artifact, not a second source of truth. The Recollectors would insist.
 

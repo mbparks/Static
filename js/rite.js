@@ -21,24 +21,33 @@ $('btn-sim').addEventListener('click', () => {
 
 $('btn-serial').addEventListener('click', async () => {
   const err = $('serial-err'); err.style.display='none';
-  if (!('serial' in navigator)) {
+  if (!StaticSerial.supported()) {
     err.textContent = 'This browser has no Web Serial. Chrome or Edge on desktop can reach a Shard.';
     err.style.display='block'; return;
   }
   try {
-    const port = await navigator.serial.requestPort();
-    const info = port.getInfo();
+    await StaticSerial.connect();
+    const id = await StaticSerial.identify();
+    if (!id) {
+      await StaticSerial.disconnect();
+      err.textContent = 'A device answered, but not in the Shard tongue. Is the STATIC firmware flashed?';
+      err.style.display='block'; return;
+    }
+    if (id.state === 'SOULED') {
+      await StaticSerial.disconnect();
+      err.innerHTML = 'This Shard already carries a soul \u2014 <b>' + id.name.replace(/</g,'&lt;') +
+        '</b>. It will not be reforged here. See <a href="status.html">the Record</a>.';
+      err.style.display='block'; return;
+    }
     state.mode = 'serial';
-    state.port = port;
-    $('detect-head').textContent = '\u25c8 SHARD DETECTED \u2014 serial';
+    $('detect-head').textContent = '\u25c8 SHARD DETECTED \u2014 unconsecrated';
     $('detect-body').innerHTML =
-      'usb ' + (info.usbVendorId ? info.usbVendorId.toString(16) : '?') + ':' +
-      (info.usbProductId ? info.usbProductId.toString(16) : '?') +
-      ' \u00b7 identity handshake: <span style="color:var(--amb)">pending firmware</span><br>' +
-      'treated as: <span style="color:var(--amb)">UNCONSECRATED</span> \u00b7 flashing arrives with firmware v0';
+      'firmware ' + (id.fw||'?') + ' \u00b7 state: <span style=\"color:var(--amb)\">UNCONSECRATED</span>' +
+      ' \u00b7 record: empty \u00b7 nobody yet';
     startBuilder();
   } catch(e) {
-    err.textContent = 'No Shard chosen. The rite waits.';
+    try { await StaticSerial.disconnect(); } catch(_){}
+    err.textContent = 'No Shard chosen, or the rite was interrupted.';
     err.style.display='block';
   }
 });
@@ -232,7 +241,18 @@ async function beginIgnition(){
 
   if (state.mode==='serial'){
     $('ring-note-big').textContent = 'PUT THE SCREEN DOWN.';
-    $('ring-note-body').innerHTML = 'Watch your Shard. When firmware v0 lands, the ring itself will light here.<br>Until then the effigy below shows what it will do.';
+    $('ring-note-body').innerHTML = 'Writing the soul to your Shard\u2026 its ring will light, letter by letter,<br>in the order that belongs to this name alone.';
+    const soul = { name: state.name, cls: state.cls.name,
+                   maxhp: hitpoints(), fw: firewall(), static: 0, hash: state.hash.slice(0,16) };
+    let wrote = false;
+    try { wrote = await StaticSerial.consecrate(soul); } catch(e){ wrote = false; }
+    try { await StaticSerial.disconnect(); } catch(e){}
+    if (wrote){
+      $('rite-log').innerHTML += '<div class=\"did\">\u2713 soul written to the Shard &nbsp;<span class=\"note\">(ignited on your desk)</span></div>';
+      $('ring-note-body').innerHTML = 'It is done. Your Shard is breathing. The effigy below mirrors it.';
+    } else {
+      $('rite-log').innerHTML += '<div class=\"note\">soul could not be written \u2014 the record is saved in this browser; try the rite again with the Shard connected.</div>';
+    }
   }
   await igniteRing();
   $('ign-actions').style.visibility='visible';
@@ -280,7 +300,7 @@ $('btn-print').addEventListener('click', () => { buildCard(); window.print(); })
 $('btn-done').addEventListener('click', () => {
   $('ring-note-big').textContent = 'THE RITE IS COMPLETE.';
   $('ring-note-body').textContent = state.mode==='serial'
-    ? 'Your Shard will take its soul when firmware v0 arrives. The record you made is saved in this browser.'
+    ? 'Your Shard carries its soul now. Unplug it; it will wake showing who it is.'
     : 'This soul was forged in effigy. When you hold a real Shard, forge it again — properly, aloud.';
 });
 

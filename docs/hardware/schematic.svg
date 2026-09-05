@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 620" role="img" font-family="ui-monospace,Menlo,monospace">
+<title>Electrical schematic of the player Shard</title>
+<defs><marker id="dot" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="6" markerHeight="6"><circle cx="3" cy="3" r="2.4" fill="context-stroke"/></marker></defs>
+<style>.th{fill:#e8e4d8;font-size:14px}.ts{fill:#8a93a8;font-size:12px}</style>
+<text class="th" x="40" y="30">Player Shard — schematic</text>
+<text class="ts" x="40" y="50">nets: VBAT (cell) · +3V3 (regulated) · GND</text>
+<g stroke="#B4B2A9" stroke-width="1.5" fill="none"><line x1="70" y1="120" x2="110" y2="120"/><line x1="90" y1="108" x2="90" y2="132"/><line x1="98" y1="114" x2="98" y2="126"/></g>
+<text class="ts" x="52" y="103" text-anchor="end">LiPo</text><text class="ts" x="52" y="143" text-anchor="end">3.7V</text><text class="ts" x="114" y="121">+</text>
+<line x1="90" y1="132" x2="90" y2="150" stroke="#B4B2A9"/>
+<rect x="55" y="150" width="110" height="60" rx="4" fill="#412402" stroke="#EF9F27" stroke-width=".5"/><text class="th" x="110" y="176" text-anchor="middle">TP4056</text><text class="ts" x="110" y="194" text-anchor="middle">USB charge mgmt</text>
+<line x1="110" y1="210" x2="110" y2="224" stroke="#EF9F27"/><text class="ts" x="110" y="236" text-anchor="middle">USB-C in</text>
+<line x1="55" y1="150" x2="35" y2="150" stroke="#E24B4A" stroke-width="1.5"/><text class="ts" x="30" y="153" text-anchor="end">VBAT</text>
+<line x1="165" y1="180" x2="200" y2="180" stroke="#E24B4A" stroke-width="1.5"/><line x1="200" y1="180" x2="200" y2="270" stroke="#E24B4A" stroke-width="1.5" marker-start="url(#dot)"/><text class="ts" x="232" y="180">VBAT</text>
+<rect x="150" y="270" width="120" height="56" rx="4" fill="#412402" stroke="#EF9F27" stroke-width=".5"/><text class="th" x="210" y="295" text-anchor="middle">MCP1700</text><text class="ts" x="210" y="313" text-anchor="middle">3.3V LDO</text>
+<line x1="270" y1="298" x2="330" y2="298" stroke="#378ADD" stroke-width="1.5"/><line x1="330" y1="298" x2="330" y2="90" stroke="#378ADD" stroke-width="1.5"/><line x1="330" y1="90" x2="620" y2="90" stroke="#378ADD" stroke-width="1.5"/><text class="ts" x="360" y="84" fill="#85B7EB">+3V3 rail</text>
+<line x1="90" y1="360" x2="620" y2="360" stroke="#5F5E5A" stroke-width="1.5"/><text class="ts" x="360" y="378">GND rail</text>
+<g stroke="#5F5E5A" stroke-width="1.2" fill="none"><line x1="355" y1="360" x2="355" y2="392"/><line x1="343" y1="392" x2="367" y2="392"/><line x1="347" y1="398" x2="363" y2="398"/><line x1="351" y1="404" x2="359" y2="404"/></g>
+<line x1="210" y1="326" x2="210" y2="360" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#dot)"/>
+<rect x="360" y="150" width="150" height="150" rx="6" fill="#4a1f10" stroke="#D85A30" stroke-width=".5"/><text class="th" x="435" y="180" text-anchor="middle">ESP32</text><text class="ts" x="435" y="198" text-anchor="middle">module</text>
+<text class="ts" x="368" y="224">3V3</text><text class="ts" x="368" y="292">GND</text><text class="ts" x="502" y="224" text-anchor="end">GPIO5</text><text class="ts" x="502" y="254" text-anchor="end">TOUCH0</text>
+<line x1="360" y1="220" x2="330" y2="220" stroke="#378ADD" stroke-width="1.5" marker-end="url(#dot)"/>
+<line x1="360" y1="288" x2="345" y2="288" stroke="#5F5E5A" stroke-width="1.5"/><line x1="345" y1="288" x2="345" y2="360" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#dot)"/>
+<g stroke="#B4B2A9" stroke-width="1.5" fill="none"><line x1="315" y1="224" x2="315" y2="232"/><line x1="307" y1="232" x2="323" y2="232"/><line x1="307" y1="238" x2="323" y2="238"/><line x1="315" y1="238" x2="315" y2="246"/></g>
+<line x1="315" y1="220" x2="315" y2="224" stroke="#378ADD"/><line x1="315" y1="246" x2="315" y2="360" stroke="#5F5E5A"/><text class="ts" x="300" y="234" text-anchor="end">100nF</text>
+<line x1="510" y1="220" x2="540" y2="220" stroke="#B4B2A9" stroke-width="1.5"/><rect x="540" y="214" width="34" height="12" rx="2" fill="none" stroke="#B4B2A9" stroke-width="1.5"/><text class="ts" x="557" y="206" text-anchor="middle">330Ω</text><line x1="574" y1="220" x2="600" y2="220" stroke="#B4B2A9" stroke-width="1.5"/><text class="ts" x="557" y="240" text-anchor="middle">DIN</text>
+<rect x="560" y="150" width="90" height="56" rx="6" fill="#04342c" stroke="#1D9E75" stroke-width=".5"/><text class="th" x="605" y="175" text-anchor="middle">WS2812B</text><text class="ts" x="605" y="193" text-anchor="middle">×24 ring</text>
+<line x1="605" y1="150" x2="605" y2="90" stroke="#378ADD" stroke-width="1.5" marker-end="url(#dot)"/>
+<line x1="640" y1="206" x2="640" y2="360" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#dot)"/><line x1="600" y1="220" x2="600" y2="240" stroke="#B4B2A9"/><line x1="600" y1="240" x2="620" y2="240" stroke="#B4B2A9"/><line x1="620" y1="240" x2="620" y2="206" stroke="#B4B2A9"/>
+<g stroke="#B4B2A9" stroke-width="1.5" fill="none"><line x1="670" y1="112" x2="670" y2="120"/><line x1="662" y1="120" x2="678" y2="120"/><path d="M662 128 Q670 122 678 128"/><line x1="670" y1="128" x2="670" y2="136"/></g>
+<line x1="670" y1="90" x2="670" y2="112" stroke="#378ADD"/><line x1="670" y1="136" x2="670" y2="330" stroke="#5F5E5A"/><line x1="640" y1="330" x2="670" y2="330" stroke="#5F5E5A"/><text class="ts" x="656" y="126" text-anchor="end">1000µF</text>
+<line x1="490" y1="250" x2="490" y2="450" stroke="#7F77DD" stroke-width="1.5"/><rect x="440" y="450" width="100" height="46" rx="6" fill="#2b2560" stroke="#7F77DD" stroke-width=".5"/><text class="th" x="490" y="472" text-anchor="middle">Touch pad</text><text class="ts" x="490" y="489" text-anchor="middle">copper area</text><text class="ts" x="512" y="334">touch sense</text>
+<line x1="40" y1="560" x2="70" y2="560" stroke="#378ADD" stroke-width="1.5"/><text class="ts" x="76" y="564">+3V3</text>
+<line x1="140" y1="560" x2="170" y2="560" stroke="#E24B4A" stroke-width="1.5"/><text class="ts" x="176" y="564">VBAT</text>
+<line x1="240" y1="560" x2="270" y2="560" stroke="#5F5E5A" stroke-width="1.5"/><text class="ts" x="276" y="564">GND</text>
+<line x1="330" y1="560" x2="360" y2="560" stroke="#7F77DD" stroke-width="1.5"/><text class="ts" x="366" y="564">signal</text>
+<line x1="440" y1="560" x2="470" y2="560" stroke="#B4B2A9" stroke-width="1.5"/><text class="ts" x="476" y="564">passive / discrete</text>
+</svg>

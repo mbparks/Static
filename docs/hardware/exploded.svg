@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 660" role="img" font-family="ui-monospace,Menlo,monospace">
+<title>Exploded view of a Shard player token</title>
+<defs>
+<linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8f96a3"/><stop offset="100%" stop-color="#5a616e"/></linearGradient>
+<linearGradient id="pcb" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1f6e4e"/><stop offset="100%" stop-color="#0e3f2c"/></linearGradient>
+<linearGradient id="batt" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c9902f"/><stop offset="100%" stop-color="#8a5f16"/></linearGradient>
+</defs>
+<style>.th{fill:#e8e4d8;font-size:14px}.ts{fill:#8a93a8;font-size:12px}.ld{stroke:#73726c;stroke-width:.5;stroke-dasharray:3 3}</style>
+<line class="ld" x1="300" y1="70" x2="470" y2="70"/><line class="ld" x1="300" y1="150" x2="470" y2="150"/><line class="ld" x1="300" y1="235" x2="470" y2="235"/><line class="ld" x1="300" y1="330" x2="470" y2="330"/><line class="ld" x1="300" y1="420" x2="470" y2="420"/><line class="ld" x1="300" y1="545" x2="470" y2="545"/>
+<text class="th" x="478" y="74">Miniature figure</text><text class="ts" x="478" y="90">keys onto the lid</text>
+<text class="th" x="478" y="154">Printed lid</text><text class="ts" x="478" y="170">diffuses the ring</text>
+<text class="th" x="478" y="239">LED ring</text><text class="ts" x="478" y="255">24 addressable LEDs</text>
+<text class="th" x="478" y="334">Shard ESP32</text><text class="ts" x="478" y="350">brain + Bluetooth</text>
+<text class="th" x="478" y="424">Battery</text><text class="ts" x="478" y="440">rechargeable LiPo</text>
+<text class="th" x="478" y="549">Printed base</text><text class="ts" x="478" y="565">shell + touch pad</text>
+<line x1="200" y1="60" x2="200" y2="600" stroke="#888780" stroke-width=".5" stroke-dasharray="2 6" opacity=".5"/>
+<ellipse cx="200" cy="82" rx="46" ry="12" fill="#3a4150" opacity=".25"/><circle cx="200" cy="46" r="14" fill="url(#metal)" stroke="#454b57"/><path d="M188 58 Q200 52 212 58 L216 82 Q200 88 184 82 Z" fill="url(#metal)" stroke="#454b57"/>
+<ellipse cx="200" cy="150" rx="120" ry="30" fill="#3a4150" stroke="#1b2029"/><path d="M80 150 Q80 168 200 176 Q320 168 320 150 Q320 132 200 124 Q80 132 80 150 Z" fill="#2f3540" stroke="#1b2029"/><ellipse cx="200" cy="150" rx="52" ry="13" fill="#252b36" stroke="#1b2029"/>
+<path d="M78 235 Q78 258 200 267 Q322 258 322 235 L322 231 Q322 254 200 263 Q78 254 78 231 Z" fill="#1b1f27" stroke="#0e1116"/><ellipse cx="200" cy="231" rx="122" ry="30" fill="#12151b" stroke="#2a303a"/><ellipse cx="200" cy="231" rx="86" ry="20" fill="#0c0e12" stroke="#2a303a"/>
+<g fill="#5DCAA5"><ellipse cx="80" cy="231" rx="4" ry="2.6"/><ellipse cx="104" cy="244" rx="4" ry="2.6"/><ellipse cx="140" cy="253" rx="4" ry="2.6"/><ellipse cx="200" cy="257" rx="4" ry="2.6"/><ellipse cx="260" cy="253" rx="4" ry="2.6"/><ellipse cx="296" cy="244" rx="4" ry="2.6"/><ellipse cx="320" cy="231" rx="4" ry="2.6"/><ellipse cx="296" cy="218" rx="4" ry="2.6"/><ellipse cx="260" cy="210" rx="4" ry="2.6"/><ellipse cx="200" cy="206" rx="4" ry="2.6"/><ellipse cx="140" cy="210" rx="4" ry="2.6"/><ellipse cx="104" cy="218" rx="4" ry="2.6"/></g>
+<path d="M92 330 Q92 350 200 358 Q308 350 308 330 L308 326 Q308 346 200 354 Q92 346 92 326 Z" fill="#0a2c1e" stroke="#062017"/><ellipse cx="200" cy="326" rx="108" ry="26" fill="url(#pcb)" stroke="#0a3324"/><rect x="168" y="316" width="30" height="16" rx="2" fill="#20242c"/><rect x="210" y="320" width="22" height="10" rx="1" fill="#c9b46a"/><ellipse cx="150" cy="332" rx="5" ry="3" fill="#8f96a3"/><ellipse cx="250" cy="332" rx="5" ry="3" fill="#8f96a3"/>
+<path d="M120 420 Q120 438 200 445 Q280 438 280 420 L280 416 Q280 434 200 441 Q120 434 120 416 Z" fill="#6f4d11" stroke="#4a330b"/><ellipse cx="200" cy="416" rx="80" ry="20" fill="url(#batt)" stroke="#5a3f0e"/>
+<path d="M74 545 Q74 588 200 600 Q326 588 326 545 L326 540 Q326 583 200 595 Q74 583 74 540 Z" fill="#3a3f47" stroke="#22262c"/><ellipse cx="200" cy="540" rx="126" ry="31" fill="#4a5058" stroke="#2a2e34"/><ellipse cx="200" cy="540" rx="104" ry="25" fill="#31353c" stroke="#22262c"/><ellipse cx="150" cy="540" rx="9" ry="5" fill="none" stroke="#7F77DD" stroke-width="1.5"/>
+</svg>

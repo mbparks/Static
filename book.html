@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>THE BOOK — STATIC Rulebook v0.10</title>
+<title>THE BOOK — STATIC Rulebook v0.11</title>
 <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
 <p><a class="home" href="index.html">&larr; STATIC</a></p>
 <h1 id="static">STATIC</h1>
 <h3 id="a-tabletop-game-of-chrome-corruption-and-the-machines-that-remember-us">A tabletop game of chrome, corruption, and the machines that remember us</h3>
-<p><strong>The Rulebook — draft v0.10</strong> <em>(working title; all names provisional)</em></p>
+<p><strong>The Rulebook — draft v0.11</strong> <em>(working title; all names provisional)</em></p>
 <p><em>One book for everyone. Part One teaches you to play. Part Two walks through a session beat by beat. Part Three is for the Gamemaster — players are welcome to read it, but the mysteries in there will land harder if you don't.</em></p>
 <hr>
 <h1 id="part-one-playing">PART ONE — PLAYING</h1>
@@ -646,7 +646,113 @@
 <li>A child in a cordon town has begun humming a Severance jamming rhyme nobody taught her — with three extra bars on the end that no Recollection copy contains.</li>
 </ul>
 <hr>
-<p><em>STATIC Rulebook draft v0.10 — one book, three parts, all of it provisional.</em></p>
+<h1 id="appendix-the-hardware">APPENDIX — THE HARDWARE</h1>
+<p><em>How to build the machines the game runs on. This appendix is reference, not canon; a table can play STATIC entirely on paper (chapter 3), and the electronics only ever perform what the rules already decided. Build them when you want the rings to breathe.</em></p>
+<h2 id="how-it-all-connects">How it all connects</h2>
+<p>The GM's laptop runs everything. It drives the projector or TV over HDMI (the private console on the laptop, the public table view on the big screen), and it talks to a dock — a plain ESP32 on a USB cable — which relays the game's signed events by radio to the player Shards. The Shards never decide anything; they receive state and perform it. Nothing on the table needs the internet, an account, or a router.</p>
+<figure class="hw"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 620" role="img" font-family="ui-monospace,Menlo,monospace">
+<title>STATIC hardware connection diagram and Shard token cutaway</title>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#8a93a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<style>.b{fill:#12151d;stroke-width:.5}.th{fill:#e8e4d8;font-size:14px}.ts{fill:#8a93a8;font-size:12px}</style>
+<rect x="40" y="40" width="180" height="56" rx="8" fill="#0f3d33" stroke="#1D9E75"/>
+<text class="th" x="130" y="65" text-anchor="middle">GM laptop</text><text class="ts" x="130" y="82" text-anchor="middle">console + table view</text>
+<rect x="440" y="40" width="200" height="56" rx="8" fill="#2b2560" stroke="#7F77DD"/>
+<text class="th" x="540" y="65" text-anchor="middle">External display</text><text class="ts" x="540" y="82" text-anchor="middle">projector or TV</text>
+<line x1="220" y1="68" x2="438" y2="68" stroke="#8a93a8" stroke-width="1.5" marker-end="url(#arrow)"/><text class="ts" x="329" y="60" text-anchor="middle">HDMI</text>
+<rect x="55" y="150" width="150" height="56" rx="8" fill="#4a1f10" stroke="#D85A30"/>
+<text class="th" x="130" y="175" text-anchor="middle">Dock ESP32</text><text class="ts" x="130" y="192" text-anchor="middle">radio bridge</text>
+<line x1="130" y1="96" x2="130" y2="148" stroke="#8a93a8" stroke-width="1.5" marker-end="url(#arrow)" marker-start="url(#arrow)"/><text class="ts" x="162" y="126" text-anchor="middle">USB</text>
+<line x1="205" y1="178" x2="300" y2="250" stroke="#7F77DD" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+<line x1="205" y1="178" x2="440" y2="250" stroke="#7F77DD" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+<line x1="205" y1="178" x2="580" y2="250" stroke="#7F77DD" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+<text class="ts" x="470" y="204" fill="#AFA9EC">Bluetooth (wireless)</text>
+<rect x="250" y="252" width="110" height="50" rx="8" fill="#4b1528" stroke="#D4537E"/><text class="th" x="305" y="274" text-anchor="middle">Shard 1</text><text class="ts" x="305" y="291" text-anchor="middle">player token</text>
+<rect x="390" y="252" width="110" height="50" rx="8" fill="#4b1528" stroke="#D4537E"/><text class="th" x="445" y="274" text-anchor="middle">Shard 2</text><text class="ts" x="445" y="291" text-anchor="middle">player token</text>
+<rect x="530" y="252" width="110" height="50" rx="8" fill="#4b1528" stroke="#D4537E"/><text class="th" x="585" y="274" text-anchor="middle">Shard 3</text><text class="ts" x="585" y="291" text-anchor="middle">player token</text>
+<line x1="40" y1="340" x2="640" y2="340" stroke="#888780" stroke-width=".5" stroke-dasharray="3 4"/>
+<text class="th" x="40" y="366">Inside a player token (cutaway)</text>
+<path d="M210 560 L210 470 Q210 452 235 448 L445 448 Q470 452 470 470 L470 560 Z" fill="#31353c" stroke="#5F5E5A"/>
+<text class="ts" x="340" y="551" text-anchor="middle">3D-printed base</text>
+<circle cx="340" cy="410" r="16" fill="#5a616e" stroke="#454b57"/><rect x="332" y="424" width="16" height="26" rx="4" fill="#5a616e" stroke="#454b57"/>
+<ellipse cx="340" cy="462" rx="128" ry="20" fill="none" stroke="#1D9E75" stroke-width="2"/>
+<g fill="#5DCAA5"><circle cx="220" cy="462" r="3.5"/><circle cx="255" cy="470" r="3.5"/><circle cx="300" cy="475" r="3.5"/><circle cx="340" cy="476" r="3.5"/><circle cx="380" cy="475" r="3.5"/><circle cx="425" cy="470" r="3.5"/><circle cx="460" cy="462" r="3.5"/></g>
+<rect x="300" y="495" width="80" height="26" rx="4" fill="#5c2a18" stroke="#993C1D"/><text class="ts" x="340" y="511" text-anchor="middle">Shard ESP32</text>
+<rect x="300" y="525" width="80" height="18" rx="3" fill="#6f4d11" stroke="#854F0B"/><text class="ts" x="340" y="537" text-anchor="middle">LiPo battery</text>
+<circle cx="250" cy="510" r="7" fill="none" stroke="#7F77DD" stroke-width="1.5"/>
+<line class="leader" x1="460" y1="462" x2="560" y2="440" stroke="#73726c" stroke-width=".5" stroke-dasharray="3 3"/><text class="ts" x="564" y="444">LED ring (rim)</text>
+<line x1="380" y1="508" x2="560" y2="500" stroke="#73726c" stroke-width=".5" stroke-dasharray="3 3"/><text class="ts" x="564" y="504">ESP32 + Bluetooth</text>
+<line x1="380" y1="534" x2="560" y2="530" stroke="#73726c" stroke-width=".5" stroke-dasharray="3 3"/><text class="ts" x="564" y="534">rechargeable battery</text>
+<line x1="243" y1="510" x2="150" y2="510" stroke="#73726c" stroke-width=".5" stroke-dasharray="3 3"/><text class="ts" x="146" y="514" text-anchor="end">touch pad</text>
+</svg><figcaption>Hardware connection diagram</figcaption></figure>
+<h2 id="the-player-token">The player token</h2>
+<p>A Shard is a small ESP32 built into a miniature's base, with an LED ring around the rim, a rechargeable battery, and a single touch pad. The figure keys onto a printed lid that diffuses the ring; the board and battery nest in the printed base below. Assembled top to bottom, the layers are: figure, lid, ring, board, battery, base.</p>
+<figure class="hw"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 660" role="img" font-family="ui-monospace,Menlo,monospace">
+<title>Exploded view of a Shard player token</title>
+<defs>
+<linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8f96a3"/><stop offset="100%" stop-color="#5a616e"/></linearGradient>
+<linearGradient id="pcb" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1f6e4e"/><stop offset="100%" stop-color="#0e3f2c"/></linearGradient>
+<linearGradient id="batt" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c9902f"/><stop offset="100%" stop-color="#8a5f16"/></linearGradient>
+</defs>
+<style>.th{fill:#e8e4d8;font-size:14px}.ts{fill:#8a93a8;font-size:12px}.ld{stroke:#73726c;stroke-width:.5;stroke-dasharray:3 3}</style>
+<line class="ld" x1="300" y1="70" x2="470" y2="70"/><line class="ld" x1="300" y1="150" x2="470" y2="150"/><line class="ld" x1="300" y1="235" x2="470" y2="235"/><line class="ld" x1="300" y1="330" x2="470" y2="330"/><line class="ld" x1="300" y1="420" x2="470" y2="420"/><line class="ld" x1="300" y1="545" x2="470" y2="545"/>
+<text class="th" x="478" y="74">Miniature figure</text><text class="ts" x="478" y="90">keys onto the lid</text>
+<text class="th" x="478" y="154">Printed lid</text><text class="ts" x="478" y="170">diffuses the ring</text>
+<text class="th" x="478" y="239">LED ring</text><text class="ts" x="478" y="255">24 addressable LEDs</text>
+<text class="th" x="478" y="334">Shard ESP32</text><text class="ts" x="478" y="350">brain + Bluetooth</text>
+<text class="th" x="478" y="424">Battery</text><text class="ts" x="478" y="440">rechargeable LiPo</text>
+<text class="th" x="478" y="549">Printed base</text><text class="ts" x="478" y="565">shell + touch pad</text>
+<line x1="200" y1="60" x2="200" y2="600" stroke="#888780" stroke-width=".5" stroke-dasharray="2 6" opacity=".5"/>
+<ellipse cx="200" cy="82" rx="46" ry="12" fill="#3a4150" opacity=".25"/><circle cx="200" cy="46" r="14" fill="url(#metal)" stroke="#454b57"/><path d="M188 58 Q200 52 212 58 L216 82 Q200 88 184 82 Z" fill="url(#metal)" stroke="#454b57"/>
+<ellipse cx="200" cy="150" rx="120" ry="30" fill="#3a4150" stroke="#1b2029"/><path d="M80 150 Q80 168 200 176 Q320 168 320 150 Q320 132 200 124 Q80 132 80 150 Z" fill="#2f3540" stroke="#1b2029"/><ellipse cx="200" cy="150" rx="52" ry="13" fill="#252b36" stroke="#1b2029"/>
+<path d="M78 235 Q78 258 200 267 Q322 258 322 235 L322 231 Q322 254 200 263 Q78 254 78 231 Z" fill="#1b1f27" stroke="#0e1116"/><ellipse cx="200" cy="231" rx="122" ry="30" fill="#12151b" stroke="#2a303a"/><ellipse cx="200" cy="231" rx="86" ry="20" fill="#0c0e12" stroke="#2a303a"/>
+<g fill="#5DCAA5"><ellipse cx="80" cy="231" rx="4" ry="2.6"/><ellipse cx="104" cy="244" rx="4" ry="2.6"/><ellipse cx="140" cy="253" rx="4" ry="2.6"/><ellipse cx="200" cy="257" rx="4" ry="2.6"/><ellipse cx="260" cy="253" rx="4" ry="2.6"/><ellipse cx="296" cy="244" rx="4" ry="2.6"/><ellipse cx="320" cy="231" rx="4" ry="2.6"/><ellipse cx="296" cy="218" rx="4" ry="2.6"/><ellipse cx="260" cy="210" rx="4" ry="2.6"/><ellipse cx="200" cy="206" rx="4" ry="2.6"/><ellipse cx="140" cy="210" rx="4" ry="2.6"/><ellipse cx="104" cy="218" rx="4" ry="2.6"/></g>
+<path d="M92 330 Q92 350 200 358 Q308 350 308 330 L308 326 Q308 346 200 354 Q92 346 92 326 Z" fill="#0a2c1e" stroke="#062017"/><ellipse cx="200" cy="326" rx="108" ry="26" fill="url(#pcb)" stroke="#0a3324"/><rect x="168" y="316" width="30" height="16" rx="2" fill="#20242c"/><rect x="210" y="320" width="22" height="10" rx="1" fill="#c9b46a"/><ellipse cx="150" cy="332" rx="5" ry="3" fill="#8f96a3"/><ellipse cx="250" cy="332" rx="5" ry="3" fill="#8f96a3"/>
+<path d="M120 420 Q120 438 200 445 Q280 438 280 420 L280 416 Q280 434 200 441 Q120 434 120 416 Z" fill="#6f4d11" stroke="#4a330b"/><ellipse cx="200" cy="416" rx="80" ry="20" fill="url(#batt)" stroke="#5a3f0e"/>
+<path d="M74 545 Q74 588 200 600 Q326 588 326 545 L326 540 Q326 583 200 595 Q74 583 74 540 Z" fill="#3a3f47" stroke="#22262c"/><ellipse cx="200" cy="540" rx="126" ry="31" fill="#4a5058" stroke="#2a2e34"/><ellipse cx="200" cy="540" rx="104" ry="25" fill="#31353c" stroke="#22262c"/><ellipse cx="150" cy="540" rx="9" ry="5" fill="none" stroke="#7F77DD" stroke-width="1.5"/>
+</svg><figcaption>Exploded view of a player token</figcaption></figure>
+<h2 id="wiring-a-shard">Wiring a Shard</h2>
+<p>A LiPo cell charges over USB-C through a TP4056 charge manager and feeds a 3.3-volt regulator that powers the ESP32. One GPIO drives the LED ring through a series resistor, with a bulk capacitor across the ring's supply to absorb switch spikes; a touch-capable GPIO reads the pad. Power and ground are the only nets that reach everything.</p>
+<figure class="hw"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 620" role="img" font-family="ui-monospace,Menlo,monospace">
+<title>Electrical schematic of the player Shard</title>
+<defs><marker id="dot" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="6" markerHeight="6"><circle cx="3" cy="3" r="2.4" fill="context-stroke"/></marker></defs>
+<style>.th{fill:#e8e4d8;font-size:14px}.ts{fill:#8a93a8;font-size:12px}</style>
+<text class="th" x="40" y="30">Player Shard — schematic</text>
+<text class="ts" x="40" y="50">nets: VBAT (cell) · +3V3 (regulated) · GND</text>
+<g stroke="#B4B2A9" stroke-width="1.5" fill="none"><line x1="70" y1="120" x2="110" y2="120"/><line x1="90" y1="108" x2="90" y2="132"/><line x1="98" y1="114" x2="98" y2="126"/></g>
+<text class="ts" x="52" y="103" text-anchor="end">LiPo</text><text class="ts" x="52" y="143" text-anchor="end">3.7V</text><text class="ts" x="114" y="121">+</text>
+<line x1="90" y1="132" x2="90" y2="150" stroke="#B4B2A9"/>
+<rect x="55" y="150" width="110" height="60" rx="4" fill="#412402" stroke="#EF9F27" stroke-width=".5"/><text class="th" x="110" y="176" text-anchor="middle">TP4056</text><text class="ts" x="110" y="194" text-anchor="middle">USB charge mgmt</text>
+<line x1="110" y1="210" x2="110" y2="224" stroke="#EF9F27"/><text class="ts" x="110" y="236" text-anchor="middle">USB-C in</text>
+<line x1="55" y1="150" x2="35" y2="150" stroke="#E24B4A" stroke-width="1.5"/><text class="ts" x="30" y="153" text-anchor="end">VBAT</text>
+<line x1="165" y1="180" x2="200" y2="180" stroke="#E24B4A" stroke-width="1.5"/><line x1="200" y1="180" x2="200" y2="270" stroke="#E24B4A" stroke-width="1.5" marker-start="url(#dot)"/><text class="ts" x="232" y="180">VBAT</text>
+<rect x="150" y="270" width="120" height="56" rx="4" fill="#412402" stroke="#EF9F27" stroke-width=".5"/><text class="th" x="210" y="295" text-anchor="middle">MCP1700</text><text class="ts" x="210" y="313" text-anchor="middle">3.3V LDO</text>
+<line x1="270" y1="298" x2="330" y2="298" stroke="#378ADD" stroke-width="1.5"/><line x1="330" y1="298" x2="330" y2="90" stroke="#378ADD" stroke-width="1.5"/><line x1="330" y1="90" x2="620" y2="90" stroke="#378ADD" stroke-width="1.5"/><text class="ts" x="360" y="84" fill="#85B7EB">+3V3 rail</text>
+<line x1="90" y1="360" x2="620" y2="360" stroke="#5F5E5A" stroke-width="1.5"/><text class="ts" x="360" y="378">GND rail</text>
+<g stroke="#5F5E5A" stroke-width="1.2" fill="none"><line x1="355" y1="360" x2="355" y2="392"/><line x1="343" y1="392" x2="367" y2="392"/><line x1="347" y1="398" x2="363" y2="398"/><line x1="351" y1="404" x2="359" y2="404"/></g>
+<line x1="210" y1="326" x2="210" y2="360" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#dot)"/>
+<rect x="360" y="150" width="150" height="150" rx="6" fill="#4a1f10" stroke="#D85A30" stroke-width=".5"/><text class="th" x="435" y="180" text-anchor="middle">ESP32</text><text class="ts" x="435" y="198" text-anchor="middle">module</text>
+<text class="ts" x="368" y="224">3V3</text><text class="ts" x="368" y="292">GND</text><text class="ts" x="502" y="224" text-anchor="end">GPIO5</text><text class="ts" x="502" y="254" text-anchor="end">TOUCH0</text>
+<line x1="360" y1="220" x2="330" y2="220" stroke="#378ADD" stroke-width="1.5" marker-end="url(#dot)"/>
+<line x1="360" y1="288" x2="345" y2="288" stroke="#5F5E5A" stroke-width="1.5"/><line x1="345" y1="288" x2="345" y2="360" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#dot)"/>
+<g stroke="#B4B2A9" stroke-width="1.5" fill="none"><line x1="315" y1="224" x2="315" y2="232"/><line x1="307" y1="232" x2="323" y2="232"/><line x1="307" y1="238" x2="323" y2="238"/><line x1="315" y1="238" x2="315" y2="246"/></g>
+<line x1="315" y1="220" x2="315" y2="224" stroke="#378ADD"/><line x1="315" y1="246" x2="315" y2="360" stroke="#5F5E5A"/><text class="ts" x="300" y="234" text-anchor="end">100nF</text>
+<line x1="510" y1="220" x2="540" y2="220" stroke="#B4B2A9" stroke-width="1.5"/><rect x="540" y="214" width="34" height="12" rx="2" fill="none" stroke="#B4B2A9" stroke-width="1.5"/><text class="ts" x="557" y="206" text-anchor="middle">330Ω</text><line x1="574" y1="220" x2="600" y2="220" stroke="#B4B2A9" stroke-width="1.5"/><text class="ts" x="557" y="240" text-anchor="middle">DIN</text>
+<rect x="560" y="150" width="90" height="56" rx="6" fill="#04342c" stroke="#1D9E75" stroke-width=".5"/><text class="th" x="605" y="175" text-anchor="middle">WS2812B</text><text class="ts" x="605" y="193" text-anchor="middle">×24 ring</text>
+<line x1="605" y1="150" x2="605" y2="90" stroke="#378ADD" stroke-width="1.5" marker-end="url(#dot)"/>
+<line x1="640" y1="206" x2="640" y2="360" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#dot)"/><line x1="600" y1="220" x2="600" y2="240" stroke="#B4B2A9"/><line x1="600" y1="240" x2="620" y2="240" stroke="#B4B2A9"/><line x1="620" y1="240" x2="620" y2="206" stroke="#B4B2A9"/>
+<g stroke="#B4B2A9" stroke-width="1.5" fill="none"><line x1="670" y1="112" x2="670" y2="120"/><line x1="662" y1="120" x2="678" y2="120"/><path d="M662 128 Q670 122 678 128"/><line x1="670" y1="128" x2="670" y2="136"/></g>
+<line x1="670" y1="90" x2="670" y2="112" stroke="#378ADD"/><line x1="670" y1="136" x2="670" y2="330" stroke="#5F5E5A"/><line x1="640" y1="330" x2="670" y2="330" stroke="#5F5E5A"/><text class="ts" x="656" y="126" text-anchor="end">1000µF</text>
+<line x1="490" y1="250" x2="490" y2="450" stroke="#7F77DD" stroke-width="1.5"/><rect x="440" y="450" width="100" height="46" rx="6" fill="#2b2560" stroke="#7F77DD" stroke-width=".5"/><text class="th" x="490" y="472" text-anchor="middle">Touch pad</text><text class="ts" x="490" y="489" text-anchor="middle">copper area</text><text class="ts" x="512" y="334">touch sense</text>
+<line x1="40" y1="560" x2="70" y2="560" stroke="#378ADD" stroke-width="1.5"/><text class="ts" x="76" y="564">+3V3</text>
+<line x1="140" y1="560" x2="170" y2="560" stroke="#E24B4A" stroke-width="1.5"/><text class="ts" x="176" y="564">VBAT</text>
+<line x1="240" y1="560" x2="270" y2="560" stroke="#5F5E5A" stroke-width="1.5"/><text class="ts" x="276" y="564">GND</text>
+<line x1="330" y1="560" x2="360" y2="560" stroke="#7F77DD" stroke-width="1.5"/><text class="ts" x="366" y="564">signal</text>
+<line x1="440" y1="560" x2="470" y2="560" stroke="#B4B2A9" stroke-width="1.5"/><text class="ts" x="476" y="564">passive / discrete</text>
+</svg><figcaption>Player Shard schematic</figcaption></figure>
+<p><strong>Builder's notes.</strong> The WS2812B is happiest at 5 volts; for a 3.3-volt battery build, the SK6812 variant is the cleaner drop-in and wants no level shifter. Cap ring brightness in firmware — twenty-four LEDs at full white will brown out a small cell, which is one more reason the ring vocabulary breathes dim and slow. The dock is the same board minus ring, battery, and pad: it lives on the laptop's USB and does nothing but relay. Exact pin names vary by module; GPIO5 and TOUCH0 here are examples, not scripture.</p>
+<p><em>The device contract — the functions the firmware must match so a name lights the ring in the right order, and a death runs it backward — lives in the project's code, not this book: <code>firmware/shared/static_contract.h</code>, ported byte-for-byte from the web Forge. WIP Arduino sketches for the Shard and the dock live under <code>firmware/</code>. See the repository.</em></p>
+<hr>
+<p><em>STATIC Rulebook draft v0.11 — one book, three parts, all of it provisional.</em></p>
 <p><a class="home" href="index.html">&larr; STATIC</a></p>
 </div>
 </body>

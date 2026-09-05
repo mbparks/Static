@@ -2,14 +2,22 @@
 const $ = id => document.getElementById(id);
 
 $('btn-serial').addEventListener('click', async () => {
-  if (!('serial' in navigator)) {
+  if (!StaticSerial.supported()) {
     $('st-msg').textContent = 'This browser has no Web Serial. Chrome or Edge on desktop can reach a Shard.';
     return;
   }
   try {
-    await navigator.serial.requestPort();
-    $('st-msg').textContent = 'Shard heard, but the identity handshake arrives with firmware v0. Until then, only effigies can be read.';
+    await StaticSerial.connect();
+    const soul = await StaticSerial.readSoul();
+    await StaticSerial.disconnect();
+    if (!soul || soul.state !== 'SOULED') {
+      $('st-msg').textContent = 'That Shard is unconsecrated \u2014 nobody yet. The Forge is that way.';
+      $('st-view').style.display = 'none';
+      return;
+    }
+    renderShard(soul);
   } catch(e) {
+    try { await StaticSerial.disconnect(); } catch(_){}
     $('st-msg').textContent = 'No Shard chosen. The record waits.';
   }
 });
@@ -72,3 +80,34 @@ function render(g, hash){
     </div>`;
 }
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function renderShard(soul){
+  const cls = CONTENT.classes.find(c => c.id.toLowerCase() === String(soul.cls).toLowerCase())
+            || { name: soul.cls };
+  $('st-msg').textContent = '';
+  $('st-view').style.display = 'block';
+  const seal = '#' + (soul.hash||'').slice(0,4).toUpperCase() + '-' + (soul.hash||'').slice(4,8).toUpperCase();
+  $('st-view').innerHTML = `
+    <div class="st-head">
+      <div>
+        <div class="st-name">${esc(soul.name)}</div>
+        <div class="st-sub">${esc(cls.name||'')} \u00b7 read from a physical Shard</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="chip">ALIVE \u00b7 ON DEVICE</div>
+      </div>
+    </div>
+    <div class="vitals">
+      <div class="vital"><div class="t">CONDITION</div><div class="v" style="color:var(--grn)">HP ${soul.maxhp}/${soul.maxhp}</div></div>
+      <div class="vital"><div class="t">FIREWALL</div><div class="v">${soul.fw}</div></div>
+      <div class="vital"><div class="t">STATIC</div><div class="v" style="color:var(--pur)">${soul.static} marked</div></div>
+    </div>
+    <div class="st-cols">
+      <div class="st-col"><h4>THE RECORD</h4>
+        <div class="st-list"><div>soul held in the Shard\u2019s own flash</div>
+        <div style="color:var(--dim);">the ledger lives on the device; this is its identity.</div></div></div>
+      <div class="st-col"><h4>PROVENANCE</h4>
+        <div class="st-prov">genesis ${seal}<br>read live over USB<br>
+        <span style="color:var(--faint);">updates never touch the soul</span></div></div>
+    </div>`;
+}

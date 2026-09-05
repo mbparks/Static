@@ -267,3 +267,11 @@ body.tv{padding:0; background:#07080b; overflow:hidden;}
 .story hr{border:none; border-top:1px solid var(--line); margin:22px auto; width:38%;}
 .story em{color:#e8e4d8; font-style:italic;}
 .story strong{color:#fff; font-weight:500;}
+
+
+/* ── book hardware figures ── */
+.book figure.hw{margin:20px 0; padding:14px; border:1px solid var(--line); border-radius:8px; background:#0c0e12;}
+.book figure.hw svg{display:block; width:100%; height:auto;}
+.book figure.hw figcaption{color:var(--dim); font-size:11px; letter-spacing:1px; text-align:center; margin-top:8px;}
+
+.book code{font-family:var(--mono);font-size:.9em;color:var(--grn);background:#12151d;padding:1px 5px;border-radius:3px;}

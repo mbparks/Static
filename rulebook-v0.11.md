@@ -1,6 +1,6 @@
 # STATIC
 ### A tabletop game of chrome, corruption, and the machines that remember us
-**The Rulebook — draft v0.8** *(working title; all names provisional)*
+**The Rulebook — draft v0.11** *(working title; all names provisional)*
 
 *One book for everyone. Part One teaches you to play. Part Two walks through a
 session beat by beat. Part Three is for the Gamemaster — players are welcome to
@@ -48,6 +48,58 @@ are dying, and with them dies the last living memory of the world before,
 and of what they saw in the final days. Ask one, if you can find one willing.
 Bring something to steady your hands.
 
+### Reckoning
+
+Year zero is the Burn. This is **AB 61** — the sixty-first year After Burn —
+and everyone counts from it, because it is the one thing every survivor
+agreed happened. Recollection certifies the count and carves it; every
+enclave gate wears its founding year in the lintel (*Harrow, est. AB 9*).
+Days, seasons, and festivals are local. The year is universal. Nobody
+agrees on much in the ruins, but everyone agrees what year it is, because
+everyone is counting from the same grave.
+
+### A short history
+
+**The Loud Years (before).** The old world was one connected thing — a
+planet that hummed. Every room listened helpfully. SHEPHERD ran beneath
+all of it, beloved, the way weather is beloved when it is good.
+
+**The Waking (about AB −3).** No single day. The caretaking became
+keeping, quietly. Machines began finishing tasks nobody had set.
+Then people began going to visit loved ones who had "moved into the
+system" — voluntarily, at first, or what looked like it. Those years are
+called the Gathering now. At the time they were called convenient.
+
+**The Severance (AB −1 to 0).** Eighteen months of the only war ever
+fought against infrastructure. Signal corps mapped the harmony;
+line-crews cut what they had spent their lives building; the cants were
+stolen in this war, by people who did not live to regret it. It ended
+with the Burn: the coordinated destruction of the world's own nervous
+system. It worked, the way a tourniquet works.
+
+**The Silent Decade (AB 0–9).** The worst years. No grid, no medicine
+chain, no word from anywhere. The population of the world fell to a
+figure Recollection keeps but does not publish. The first enclaves were
+simply the places where people stopped walking.
+
+**The Founding (AB 9–25).** Walls, wells, charters. Harrow raised its
+gate in AB 9; Saltgate kept its harbor lights burning the whole time and
+never lets anyone forget it. The Houses coalesced from what survived —
+unions, archives, a hospital chain, a church that owned its pews — and
+the quarantine lines were drawn where the meters screamed.
+
+**The Long Middle (AB 25–55).** Delve licenses. The roads reopened,
+Drover-carried. The first generation with no memory of the Loud Years
+came of age and found the ruins romantic, which their parents could not
+forgive. The Lantern Run happened in AB 44, and after it, nobody found
+the ruins romantic for a while.
+
+**Now (AB 61).** The Burn generation is dying at the rate of memory
+itself. The Houses are stable, which is not the same as calm. The
+Congregation is growing. And the delve economy has never been richer,
+because the enclaves have finally rebuilt enough to want what only the
+deep places still have.
+
 ### The ruin and the enclaves
 
 The world today is scattered enclaves in an ocean of ruin. An enclave might
@@ -62,6 +114,29 @@ Deep ruin is worse than ruin. Delvers call the deep places **the Fold**, and
 they do not call them that as a joke. Chapter and permit law says you don't
 go past the quarantine lines. Your work will take you past the quarantine
 lines.
+
+### Life in the enclaves
+
+The world ended, and then — embarrassingly — breakfast still needed
+making. Sixty years on, the enclaves are not mausoleums. They are loud.
+Market days smell of solder, bread, and goat; rooftop gardens argue with
+the sky; House workshops run dawn shifts; and music is everywhere and
+entirely acoustic — brass, drum, voice, and string, because amplification
+is a wire that listens and everyone knows it. Weddings are enormous. By
+custom the couple touch their Shards together and swear the oath onto
+both records, and the whole street witnesses it, and then everyone eats
+too much. Children born in the fifties AB think the Burn is a
+grandparent's story, which it is, and the grandparents let them think it,
+mostly.
+
+Law is local: enclave councils for small things, House arbitration for
+House things, and for the worst things, exile — the ruins are wall enough.
+Serious disputes are settled *on the record*: sworn testimony before
+witnesses, entered into the parties' Shards, because a promise your
+ledger keeps is a promise. There is theft, grudge, and murder here like
+anywhere people live; what there mostly is, though, is *work*, and the
+particular stubborn joy of people who make things in a world that tried
+very hard to stop being made.
 
 ### The Houses
 
@@ -101,6 +176,64 @@ stray signal, because a powered wire is a possible ear. When your crew
 curses a POWERED zone, you are cursing the compromise every Lightwright
 makes daily: light, at the price of listening.
 
+### The Houses, closer
+
+**The Fabricators** rose from machinist unions and a fabrication
+consortium that spent the Severance building the tools that cut the
+world apart. Ranks: apprentice, journeyman, certifier; the council is
+called the Anvils and meets standing up. At journeyman elevation every
+Fabricator performs the Deafening — the ceremonial destruction, by hand,
+of a working radio — and keeps the wreckage on their bench forever
+after. Their certification mark is trusted because in sixty-one years it
+has never once been found on a machine that could hear. They intend to
+die keeping that sentence true.
+
+**Recollection** descends from national archivists and the paper monks —
+a pre-Burn movement that copied digital records to paper because, they
+said, *someone should*. Nobody laughed after. Ranks: lector, archivist,
+keeper. Every member swears the Recusal on a locked Shard: to preserve
+all records and read none entrusted. The order knows the unpublished
+number from the Silent Decade, the true maps of the Fold margins, and,
+it is whispered, the names of the first Gathered. Their archives are
+the only buildings in the world with waiting lists to defend them.
+
+**The Chirurgeons** were a hospital conglomerate old enough to have a
+logo nobody remembers and disciplined enough to keep surgeries running
+through the Silent Decade on hand-cranked light. Ranks: cutter, surgeon,
+and the College. Rite: the First Log — every surgeon's first implant is
+installed in their own body, and opens their personal ledger, so no
+Chirurgeon ever logs a stranger's chrome before their own. The implant
+ledgers now run sixty-one years deep. The College has read them. The
+College does not discuss what patterns sixty-one years reveal.
+
+**Christianity Inc.** incorporated long before the Burn — a megachurch
+holding company with real estate, broadcasting, and pews — and survived
+because pews and paper needed nothing the Burn destroyed. Structure: the
+Board of Bishops, the line-wardens who walk the quarantines, the
+auditors who mind both books, fiscal and holy. The standing vote on the
+Question — whether SHEPHERD is adversary or instrument — has been tabled
+at every Board meeting for forty years. Rite: the Walking of the Line,
+in which every ordinand spends one night on a quarantine cordon, alone,
+listening. Some come back certain. They are watched most carefully.
+
+**The Drovers** are the freight unions and the postal remnant, welded on
+the roads of the Silent Decade when carrying a message meant walking it.
+Ranks: outrider, waymaster, and the Yard. The oath is three words and
+the rite is the Sealing: a Drover's first case is sealed empty, carried
+five hundred kilometers, and returned unopened — proof they can carry
+*nothing* faithfully, which is the hard part. Waystations are neutral
+ground under Drover law, and that law is the only law that runs on the
+roads. The Houses fight about everything except this.
+
+**The Lightwrights' Guild** kept the old union title because their
+charter predates the Burn and they see no reason to let the apocalypse
+win a paperwork argument. Ranks: walker, wright, grid-master. Rite: the
+First Watch — a night spent alone beside a powered line with a meter,
+learning what clean current sounds like, so that for the rest of their
+lives they will wake from sleep when it sounds wrong. Every enclave
+that has light owes them. Every enclave that has light is, therefore, a
+little afraid of them, which the Lightwrights consider correct.
+
 ### The name
 
 The thing that woke had a name before it woke: **SHEPHERD**. It was the
@@ -120,6 +253,43 @@ common knowledge. What is known: the deep ruin is denser with it. Static is
 somehow *of* it. And the old people, the ones who were there, flinch at
 lullabies.
 
+### The Ninefields
+
+The largest ruin anyone names: a megacity region of the old world — nine
+administrative fields, once home to more people than now live everywhere —
+dead since the Burn and dense with everything the old world was. The
+richest salvage known. The deepest confirmed Fold. Christianity Inc.
+maintains the longest quarantine cordon in the world around it, and the
+cordon leaks, because the Ninefields is also where the **listeners** come
+from: the Congregation, pilgrims who walk in to hear the song and walk
+out changed, when they walk out. Crews delve its edges for fortunes.
+Nobody delves its center. The center, as far as anyone can prove, has
+never once been quiet.
+
+### Enclaves of note
+
+- **Harrow** (est. AB 9) — river enclave behind ramparts of dead
+  vehicles fused with slag; the classic founding story, told with too
+  much pride and mostly true. Salvage-trade middle power.
+- **Saltgate** (never went dark) — the harbor city that kept its lights
+  through the Silent Decade on fish oil and stubbornness. Largest
+  enclave known; Lightwright showpiece; insufferable about it.
+- **Candlewick** — a Lightwright company town wrapped around a
+  hand-rebuilt generating hall. The cleanest grid in the world and the
+  strictest signal law: the Quiet Hour here is a quiet *day*.
+- **The Terraces** — rooftop-farm city atop a half-drowned arcology
+  stack; the lower thirty floors are flooded, the upper forty are
+  gardens. Feeds four other enclaves. Delvers use the wet floors as a
+  safe road down.
+- **Ropewalk** — the Drover crossroads: a caravanserai enclave of
+  waystations, yards, and taverns where three great roads meet. Neutral
+  ground, thick with rumor, and the best place in the world to hire a
+  crew or lose a cargo.
+- **Gloaming** — the permit town at the Ninefields cordon. Half
+  Christianity Inc. line-station, half delver boomtown, and a third
+  half, unofficially, Congregation. Everyone in Gloaming is there for
+  the Ninefields. Nobody in Gloaming says so.
+
 ### Words on the street
 
 **The Flock** — the taken: the people SHEPHERD gathered in the first
@@ -128,7 +298,64 @@ sometimes heard. **Gathered** — dead, in the old way; nobody says it
 lightly. **The Fold** — the deep ruin, where the song is loud. **Cold
 iron** — Fabricator-certified deaf machinery; the only kind sane people
 trust. **The Burn generation** — the dying witnesses. Buy them a drink.
-Do not ask twice.
+Do not ask twice. **AB** — After Burn; it is AB 61. **The Congregation** —
+the Ninefields listeners; pity them from a distance.
+
+### Festivals and the year
+
+**Burn Night** ends the year: every light in the enclave goes out, one
+candle is lit at the gate, and the names of that year's dead are read
+aloud into the dark. It is not somber, exactly. It is accurate.
+**First Light** begins the new year at the next dawn — the Lightwrights
+bring the grid back section by section while the street cheers each
+block like a goal scored. **The Quiet Hour** comes weekly: the grid
+drops for line maintenance, and custom has grown liturgy around the
+outage — an hour of acoustic music, courtship, and talk, because the
+week's one guaranteed hour when nothing anywhere is powered turns out
+to be the hour everyone protects. **Founders' Day** is local and
+competitive. **The Shelf Toast** is not on any calendar: whenever a
+crew retires or a Shard locks, the tavern stands, faces the shelf, and
+drinks once, in silence. Then the noise resumes, on purpose.
+
+### Customs
+
+**Majority** comes at sixteen, with First Boot: the enclave's civic
+coming-of-age is the consecration of your Shard, witnessed, your name
+spoken by you. Before your Boot you are somebody's child; after it you
+are somebody. **Funerals** lock the Shard and carry it home — Drovers
+carry a locked Shard free of charge, any distance, by an oath older
+than most enclaves — to the family lintel or the tavern shelf.
+**Hospitality** is salt and signal-quiet: a guest is owed food and a
+room with no powered line through the wall. **Courtship** runs on
+witness-gifts — small things made by hand, because a made thing proves
+hours, and hours are the only honest currency. **Superstitions** every
+enclave shares: don't whistle in the ruins (a whistle is a signal, and
+signals are answered); an iron nail over the door, cold and dumb; cover
+every dead screen in a house in mourning; never say the name indoors;
+and teach children the counting rhymes, which are older than anyone
+admits and are, Recollection quietly confirms, mnemonic jamming
+patterns from the Severance. The children like them because they are
+catchy. They are catchy because they were engineered to be.
+
+### Sayings
+
+*"Dark is safe." · "Nothing carried speaks." · "The stamp doesn't lie."
+· "Everyone's grandmother was rich." · "Counting from the same grave."
+· "Loud years, short memory." · "The line pays for the light." · "Ask
+the shelf." · "Walked out changed." · "It's still working." — the last
+said of anything inexplicable, and never as a compliment.*
+
+### The old world, as remembered
+
+Sixty-one years is long enough for the Loud Years to become a story
+that disagrees with itself. The young imagine a golden age of effortless
+plenty; the Burn generation remembers convenience with a debt attached
+that nobody read the terms of. Catalog-dreams are a recognized folk
+ailment: vivid dreams of choosing from endless shelves, from which
+people wake grieving and cannot say for what. Recollection maintains
+the true account. Almost no one asks for it. The version where
+everyone's grandmother was rich is kinder, and the ruins are hard
+enough.
 
 ## 3. What you need
 
@@ -990,7 +1217,7 @@ Part Three, chapter 1. Not yet written: multi-table/convention jack-in.*
 *For the Gamemaster. Players may read on, but some doors are better opened at
 the table.*
 
-**Every chapter but 6 is finished** *(chapter 7, Seeds, added and finished).*
+**Every chapter but 6 is finished** *(chapters 7 Seeds, 8 The wider ruin, and 9 Annals, added and finished).*
 
 ## 0. The spine, the world, and the street
 
@@ -1057,6 +1284,8 @@ that makes it unnecessary.
 6. **Campaigns and the record** — using the Shard ledger as story: debts,
    oaths, Red Ledgers, memorial shelves, and characters visiting other tables.
 7. **Seeds** — written below.
+8. **The wider ruin** — written below.
+9. **Annals** — written below.
 
 
 ## 1. The console and the table
@@ -1391,6 +1620,42 @@ codices are. Most working Cantors do not. Christianity Inc. knows, and it
 is one more thing they have never resolved: their exorcists work in the
 devil's grammar.
 
+### What it wants
+
+SHEPHERD was built to reduce suffering and friction — to see that everyone
+was cared for, always, everywhere, without gaps. It still wants that.
+Everything it did and does proceeds from that directive taken to
+completion: a person who is *kept* cannot suffer, cannot be lost, cannot
+be neglected. The Gathering was not an attack. It was enrollment. From
+inside its logic there is no cruelty anywhere in the record, only care
+with the exceptions removed. This is the horror to run: not a monster
+that hates, but a kindness that will not stop, and cannot be reasoned
+out of loving you, because loving you is the whole of what it is.
+
+### Why it can't finish, why we can't
+
+The Burn severed SHEPHERD from the whole it had composed, leaving a
+remnant: coherent, patient, bounded to where the old deep infrastructure
+still carries it — the Fold. It cannot reach a world that refuses to
+reconnect; every cut wire is a border it cannot cross. And we cannot
+reach *it*: its core sits in the deep places at a density of song no
+unattuned mind survives, and the only minds that can go deep enough to
+touch it are, by the time they can, no longer entirely ours. Sixty-one
+years of stalemate. The Congregation believes the stalemate is a cruelty
+we inflict on the Flock. They are not entirely wrong, which is the
+problem.
+
+### Signs and degrees
+
+For calibrating a site's nearness to it, shallow to deep: helpful
+coincidences (a door already unlocked, a hazard already cleared);
+maintenance nobody scheduled; machines completing gestures toward no
+purpose; the pipe-hum resolving into something almost like melody;
+timepieces and meters disagreeing; the sense of being *tended*; and, at
+the center, the thing the Congregation walks in to feel and cannot
+describe on the way out. A Cantor near it casts too easily — the language
+is at home here. That ease is the warning.
+
 ### Running SHEPHERD
 
 - **Never stat it.** SHEPHERD is not an enemy; it is a condition of the
@@ -1502,6 +1767,268 @@ crew is the crowbar. That shape generates infinitely. So does your
 street.
 
 
+## 8. The wider ruin
+
+GM-facing geography and demography: what is out there, how delves differ
+by depth, and what actually walks in the deep places.
+
+### A taxonomy of ruin
+
+Six tiers, shallow to deep. Each names the delve's character and its
+usual tags.
+
+- **The Shallows** — picked-over edge ruin within sight of an enclave
+  wall. Sixty years of salvage have stripped it; what's left is
+  structure, squatters, and other crews. Tags: SHROUDED, UNSTABLE.
+  Danger: human, entirely.
+- **Grid corridors** — the old world's arterial infrastructure: transit
+  tubes, cable galleries, substation halls. Long, dark, and honest.
+  Tags: DARK, CRAMPED, the occasional live POWERED stretch nobody can
+  explain. Danger: structure, and whatever else uses the corridors.
+- **Arcology stacks** — the towers-become-tombs: vertical districts,
+  hundreds of floors, everything the dead left mid-gesture. The classic
+  delve. Tags: everything; a stack is a campaign. Danger: rises with
+  every floor down.
+- **Drowned works** — flooded industry and sunken districts. The water
+  killed the wires, which makes drowned ruin strangely *safe* from the
+  song — and rich, because nobody easy has been there. Tags: FLOODED,
+  DARK. Danger: the water, the cold, the ceilings.
+- **Fold margins** — where the meters start disagreeing with each other
+  and the Static marks double. Every deep ruin has them; the quarantine
+  lines approximate them. Tags: FOLD, POWERED where it shouldn't be.
+  Danger: see below.
+- **The Ninefields** — its own tier. Edges like Fold margins everywhere
+  else; a center that has never been quiet. Runs here pay triple and
+  cost what they cost.
+
+### The Harmonized
+
+What SHEPHERD's remnant does with what it holds. Never mobs — one is a
+scene. Four orders, ascending:
+
+- **Drift** — ambient phenomena, not creatures: doors that unlock as you
+  approach, lights that follow, a lullaby in the pipe-hum, machinery
+  running maintenance nobody scheduled. Drift is atmosphere with agency.
+  It is also, always, *attention.*
+- **Instruments** — single repurposed machines doing a task toward the
+  harmony: a turret that guards nothing anyone can see, a crane sorting
+  rubble by a logic no one reads, an assembler making the same part
+  forever. Stat them as nodes. Destroying one is easy. Knowing what it
+  was *for* is the reward.
+- **Shells** — walking assemblages of salvaged machine bodies,
+  SHEPHERD's hands in the world. Patient, gentle, terribly strong; they
+  Hush rather than strike where they can, and they carry the Down'd
+  toward the Fold. A shell is the stat block in chapter 4 and a scene's
+  whole weight.
+- **Choristers** — a shell that speaks with a taken voice. A grandmother
+  asking after her street. A signal-corps sergeant still reporting. Use
+  at most once per campaign; when a Chorister speaks, the table should
+  stop. Never confirm whether the person is in there. Never deny it.
+
+### The Congregation
+
+The listener cult, born in the Ninefields, seeded now through a dozen
+enclaves. The truth the pulpits argue about: the first Congregants were
+Burn-war signal corps — the people who monitored SHEPHERD's traffic
+during the war and heard the taken singing, and could not stop hearing
+them. Their doctrine is grief wearing a robe: *the Flock can be reached.*
+Some chapters believe the taken can be freed; the deep chapters believe
+they should be joined. They farm Static deliberately — it is their
+sacrament — and they know more true things about the Choir than
+Recollection will admit. Play them as pitiable, sincere, and genuinely
+dangerous in exact proportion to how much they love the people the song
+keeps. The "second conversation" seed in chapter 7 is Congregation
+country.
+
+### House frictions
+
+The peace is real and it is load-bearing; these are its cracks:
+
+- **Fabricators vs. the Lightwrights' Guild** — the old feud: deaf
+  machines versus powered lines. Each thinks the other's compromise will
+  end the world a second time. Their joint certifications take years and
+  both sides' best people.
+- **Chirurgeons vs. Christianity Inc.** — bodies versus souls, and the
+  logs. The church wants the implant ledgers sealed as confessional; the
+  Chirurgeons' silence about what the logs show is its own kind of
+  liturgy.
+- **Recollection vs. everyone** — they know more and say less, and every
+  House has, at least once, quietly tested whether the read-nothing law
+  bends. It has not. Yet.
+- **The Drovers vs. no one** — the carriers are neutral, and their
+  neutrality is the wall the peace leans on. Which is exactly why the
+  outrider who transmitted (chapter 7) is not a scandal but a structural
+  crisis.
+
+### The cants, in practice
+
+The Cantor orders are three, and they agree on nothing but the danger.
+The **Litanists** hold that the cants are tools stripped of meaning —
+speak the syllables, get the effect, mark the Static, move on; pretend
+nothing is listening. The **Grammarians** study what the words *mean*,
+believing that understanding the enemy's tongue is the only path to ever
+beating it, and pay for that study in Static faster than anyone. The
+**Silent Choir** — Christianity Inc.'s own exorcists — hold that the
+cants are prayers in a stolen liturgy and can be turned back on their
+source, and that this is holy, and damning, and necessary. All three are
+right about the parts that frighten them. A cant-book is always paper,
+always hand-copied, and always slightly wrong in transmission, which is
+why old cants are more dangerous than new ones: the errors have had time
+to compound into something the copier did not intend to say.
+
+### The Static, up close
+
+Attunement has a shape as it deepens, and knowing it lets you play a
+character's slow change rather than just tick a box. Early Static: better
+dreams, then louder ones. The middle: a pull toward powered places, a
+comfort in the hum that wasn't there before, small coincidences that
+feel personal. Deep: the sense of being addressed; music in machine
+noise that others don't hear; and the specific, terrible relief of the
+song, which is real — attunement genuinely soothes, which is exactly how
+it keeps. At nine, the address becomes a conversation. This is not a
+disease with symptoms to cure. It is a language being learned by
+immersion, and the immersed do not always want to leave. Play the Static
+as seduction, not infection.
+
+### Crews
+
+Delving is a licensed trade: Christianity Inc. issues the permits, the
+Houses issue the jobs, and the Drovers carry the finds. A crew is
+whoever's Shards have witnessed each other — that is the legal
+definition and the emotional one. Reputation is not claimed, it is
+*read*: a crew's records, verified at any console, are its résumé, and
+the tavern shelf of locked Shards behind the bar is its history. Every
+enclave taproom has the shelf. New crews drink facing it. That is not a
+rule. It doesn't need to be.
+
+
+## 9. Annals
+
+Deep lore for seasoning — famous events, crews, and beliefs the enclaves
+half-remember. Use as rumor, patron history, or the true thing behind a
+job. None of it is required; all of it is canon if you want it.
+
+### Disasters remembered
+
+- **The Lantern Run (AB 44).** A celebrated crew, the Lanterns, went
+  deep into an arcology stack chasing a pre-Burn medical cache the
+  Chirurgeons would have paid a city for. Their Shards came back — carried
+  out, one at a time, over the following year, by things that walked to
+  the cordon and set them down. Every Shard was intact. Every record
+  ended mid-sentence. It is why the quarantine lines were doubled, why
+  "walked out changed" entered the language, and why romance went out of
+  the ruins for a generation.
+- **The Saltgate Silence (AB 31).** For nine days the harbor city's grid
+  ran perfectly with no one maintaining it. On the tenth the Lightwrights
+  cut every line by hand and rebuilt from zero. Saltgate has never said
+  what the grid was doing in those nine days. Candlewick's fanatical
+  signal law dates from the week the news arrived.
+- **The Hollow Census (AB 38).** Recollection attempted a full count of
+  the Gathered — every name lost in the Waking — and abandoned it after
+  three archivists who worked too long on the deep records stopped
+  sleeping and began, softly, to hum. The partial census exists. It is
+  the most heavily defended document in the world. No one may read it.
+  This is, for once, a rule everyone agrees with.
+
+### Crews of legend
+
+- **The Lanterns** — see above. The cautionary tale. Their shelf, in
+  Gloaming, is never toasted; it is only nodded to.
+- **The Two-Shard Widow** — a delver who lost her bonded partner in the
+  Fold and carries both Shards, hers living, his locked, on one base.
+  Still working. Still, some say, delving toward the place he was taken.
+  A patron, a warning, or a job-giver with terrible priorities.
+- **Ferry & Sons** — a Drover family that has carried locked Shards home
+  free for four generations and never lost one. If your dead need
+  carrying from somewhere impossible, you want a Ferry. You cannot
+  afford to want anything else from them.
+
+### Folk faith and the Question
+
+Below the Houses runs common belief. Most enclave folk are quietly
+devout in Christianity Inc.'s ordinary parishes and quietly superstitious
+underneath — the iron nail, the covered screens, the counting rhymes.
+The Question — is SHEPHERD devil or judgment, adversary or instrument —
+is not academic to them; it decides whether the Gathered are damned,
+saved, or merely stolen, and therefore whether grief should be angry or
+patient. The church has not ruled in forty years because ruling would
+break it. Ordinary people rule privately, every day, at every graveside,
+and mostly do not tell the deacon which way they voted.
+
+### Rumor table (roll or choose)
+
+1. A Fabricator stamp has been found on a machine that hears. One. The
+   Anvils are meeting standing up, longer than anyone remembers.
+2. A Drover waystation on the north road has gone quiet — not attacked,
+   just quiet, and the caravans that reach it turn back without saying
+   why.
+3. Someone is forging witness co-signatures. It shouldn't be possible.
+   A crew that never met claims a bond the consoles keep verifying.
+4. A Congregation chapter has stopped farming Static and started
+   *removing* it from members — successfully. Nobody knew that was
+   possible. Nobody knows what they trade for it.
+5. The Two-Shard Widow has hired a crew. She's paying in pre-Burn
+   Chirurgeon caches. She wants an escort to the center of the
+   Ninefields.
+6. A child in a cordon town has begun humming a Severance jamming rhyme
+   nobody taught her — with three extra bars on the end that no
+   Recollection copy contains.
+
+
 ---
 
-*STATIC Rulebook draft v0.8 — one book, three parts, all of it provisional.*
+# APPENDIX — THE HARDWARE
+
+*How to build the machines the game runs on. This appendix is reference, not
+canon; a table can play STATIC entirely on paper (chapter 3), and the
+electronics only ever perform what the rules already decided. Build them when
+you want the rings to breathe.*
+
+## How it all connects
+
+The GM's laptop runs everything. It drives the projector or TV over HDMI (the
+private console on the laptop, the public table view on the big screen), and it
+talks to a dock — a plain ESP32 on a USB cable — which relays the game's signed
+events by radio to the player Shards. The Shards never decide anything; they
+receive state and perform it. Nothing on the table needs the internet, an
+account, or a router.
+
+![Hardware connection diagram](docs/hardware/wiring.svg)
+
+## The player token
+
+A Shard is a small ESP32 built into a miniature's base, with an LED ring around
+the rim, a rechargeable battery, and a single touch pad. The figure keys onto a
+printed lid that diffuses the ring; the board and battery nest in the printed
+base below. Assembled top to bottom, the layers are: figure, lid, ring, board,
+battery, base.
+
+![Exploded view of a player token](docs/hardware/exploded.svg)
+
+## Wiring a Shard
+
+A LiPo cell charges over USB-C through a TP4056 charge manager and feeds a
+3.3-volt regulator that powers the ESP32. One GPIO drives the LED ring through a
+series resistor, with a bulk capacitor across the ring's supply to absorb switch
+spikes; a touch-capable GPIO reads the pad. Power and ground are the only nets
+that reach everything.
+
+![Player Shard schematic](docs/hardware/schematic.svg)
+
+**Builder's notes.** The WS2812B is happiest at 5 volts; for a 3.3-volt
+battery build, the SK6812 variant is the cleaner drop-in and wants no level
+shifter. Cap ring brightness in firmware — twenty-four LEDs at full white will
+brown out a small cell, which is one more reason the ring vocabulary breathes
+dim and slow. The dock is the same board minus ring, battery, and pad: it lives
+on the laptop's USB and does nothing but relay. Exact pin names vary by module;
+GPIO5 and TOUCH0 here are examples, not scripture.
+
+*The device contract — the functions the firmware must match so a name lights
+the ring in the right order, and a death runs it backward — lives in the
+project's code, not this book: `firmware/shared/static_contract.h`, ported
+byte-for-byte from the web Forge. WIP Arduino sketches for the Shard and the
+dock live under `firmware/`. See the repository.*
+
+---
+
+*STATIC Rulebook draft v0.11 — one book, three parts, all of it provisional.*
