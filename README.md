@@ -33,7 +33,7 @@ For local work: `python3 -m http.server` in this folder, then
 | `status.html` | "The Record." Shows a Shard its reflection — reads the effigy soul the Forge saved in this browser; will read real Shards when firmware lands. |
 | `console.html` | The GM's brain. Party & opposition, zones with tags, initiative rail, turns, the sweep (ember clocks), heat with thresholds, ice (clear paths enforced), the two-step death rite, oaths, rulings, clocks, and jack-out with the XP tally. Autosaves every event. |
 | `table.html` | The projected view. A dumb renderer: ambient / scene / combat modes, flash takeovers (ice, downs, oaths, deaths), end-credits roll. Open it from the console ("OPEN TABLE VIEW") and drag it to the external display. |
-| `book.html` | The full rulebook, rendered. Regenerated from `rulebook-v0.8.md`, which ships alongside as the source of truth. |
+| `book.html` | The full rulebook, rendered. Regenerated from `rulebook-v0.9.md`, which ships alongside as the source of truth. |
 
 ## Architecture
 
@@ -150,7 +150,7 @@ per House; drawn as pages from a Recollection field guide.
 
 ## The book
 
-`rulebook-v0.8.md` is canonical. `book.html` is generated from it. If you
+`rulebook-v0.9.md` is canonical. `book.html` is generated from it. If you
 edit the rules, edit the markdown and regenerate — the rendered page is a
 build artifact, not a second source of truth. The Recollectors would insist.
 
