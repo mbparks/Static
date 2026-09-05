@@ -135,6 +135,19 @@ back:
 
 ![Character card concept](docs/mockups/character-card.svg)
 
+## House concept art
+
+Field plates for the Six Houses — two figures each, kept in
+`docs/concept-art/`. Style notes: silhouette-first, one prop and one palette
+per House; drawn as pages from a Recollection field guide.
+
+![The Fabricators](docs/concept-art/fabricators.svg)
+![Recollection](docs/concept-art/recollection.svg)
+![The Chirurgeons](docs/concept-art/chirurgeons.svg)
+![Christianity Inc.](docs/concept-art/christianity-inc.svg)
+![The Drovers](docs/concept-art/drovers.svg)
+![The Lightwrights' Guild](docs/concept-art/lightwrights.svg)
+
 ## The book
 
 `rulebook-v0.8.md` is canonical. `book.html` is generated from it. If you
