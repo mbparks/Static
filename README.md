@@ -105,6 +105,51 @@ Stubbed, awaiting **firmware v0** on real ESP32 hardware:
 4. Campaign file import/export in the console (the authoring promise).
 5. Rulebook to v1.0: Part Three chapter 6, cant & chrome catalogs, prices.
 
+## Hardware
+
+The game runs entirely on paper if you want it to; the electronics only ever
+perform what the rules already decided. Build them when you want the rings to
+breathe. Full build files live in `firmware/` and `docs/hardware/`.
+
+### How it all connects
+
+The GM's laptop runs everything. It drives the projector or TV over HDMI — the
+private console on the laptop, the public table view on the big screen — and it
+talks to a dock (a plain ESP32 on a USB cable) that relays the game's events by
+Bluetooth to the player Shards. The Shards never decide anything; they receive
+state and perform it. Nothing on the table needs the internet, an account, or a
+router.
+
+![Hardware connection diagram](docs/hardware/wiring.svg)
+
+### The player token
+
+A Shard is a small ESP32 built into a miniature's base, with an LED ring around
+the rim, a rechargeable battery, and a single touch pad. The figure keys onto a
+printed lid that diffuses the ring; the board and battery nest in the printed
+base below. Top to bottom, the layers assemble as: figure, lid, ring, board,
+battery, base.
+
+![Exploded view of a player token](docs/hardware/exploded.svg)
+
+### Wiring a Shard
+
+A LiPo cell charges over USB-C through a TP4056 charge manager and feeds a
+3.3-volt regulator that powers the ESP32. One GPIO drives the LED ring through a
+series resistor, with a bulk capacitor across the ring's supply to absorb switch
+spikes; a touch-capable GPIO reads the pad. Power and ground are the only nets
+that reach everything.
+
+![Player Shard schematic](docs/hardware/schematic.svg)
+
+Builder's notes: the WS2812B is happiest at 5 V, so for a 3.3 V battery build the
+SK6812 variant is the cleaner drop-in (no level shifter). Cap ring brightness in
+firmware — 24 LEDs at full white will brown out a small cell, which is one more
+reason the ring vocabulary breathes dim and slow. The dock is the same board
+minus ring, battery, and pad: it lives on the laptop's USB and does nothing but
+relay. Exact pin names vary by module; the schematic's GPIO5 and TOUCH0 are
+examples, not scripture.
+
 ## Concept mockups
 
 The design was mocked before it was built; these are the concepts the live
