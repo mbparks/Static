@@ -132,14 +132,30 @@ Do not ask twice.
 
 ## 3. What you need
 
-- This book, one Gamemaster, and 2–4 fellow players
-- Your Shard (miniature + base), issued or built at your first session
-- Your character card — printed fresh by the GM's console every session
+**Each player brings:**
+
 - Two six-sided dice
 - A pencil, for burning through checkboxes
+- Your character card — printed fresh by the GM's console every session
+- Your Shard (miniature + base), once you have one. Until then, a miniature
+  or any standing token marks your place, and the card and dice carry you —
+  the game runs entire on paper. The fiction outranks the machine.
 
-You do not need a phone, a laptop, or an app. Put them away. The machines at this
-table are in the world, not in your hand.
+**The table needs (usually the Gamemaster's kit):**
+
+- This book, one Gamemaster, and 2–4 players
+- A laptop or tablet running the console in a browser
+- A way to print cards — any printer will do; a little thermal receipt
+  printer at the table is not required and is completely correct
+- 3–6 zone tiles — printed tiles, index cards, or actual terrain pieces
+- A handful of hook markers — small colored clips or tokens, for the Mesh
+- Scrap card for item chits and folded secrets
+- One six-sided die in an odd color — the risk die, for sprinting
+- Optional: a projector or TV for the table view, and — once the hardware
+  exists — the dock
+
+You do not need a phone in your hand. Put it away. The machines at this
+table are in the world, not in your pocket.
 
 ## 4. The Shard
 
