@@ -275,3 +275,13 @@ body.tv{padding:0; background:#07080b; overflow:hidden;}
 .book figure.hw figcaption{color:var(--dim); font-size:11px; letter-spacing:1px; text-align:center; margin-top:8px;}
 
 .book code{font-family:var(--mono);font-size:.9em;color:var(--grn);background:#12151d;padding:1px 5px;border-radius:3px;}
+
+/* ── landing sigils ── */
+.static-sigil{width:120px; margin:0 auto 10px;}
+.static-sigil svg{width:100%; height:auto; display:block;}
+.sigil-kicker{color:var(--dim); font-size:11px; letter-spacing:3px; text-align:center; margin:40px 0 16px;}
+.house-sigils{display:grid; grid-template-columns:repeat(6,1fr); gap:10px; max-width:720px; margin:0 auto 30px;}
+@media (max-width:640px){ .house-sigils{grid-template-columns:repeat(3,1fr);} }
+.house-sigil{text-align:center;}
+.house-sigil svg{width:100%; height:auto; display:block; border-radius:8px;}
+.house-sigil span{display:block; color:var(--dim); font-size:10px; letter-spacing:1px; margin-top:4px;}
