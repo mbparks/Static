@@ -1,4 +1,5 @@
 'use strict';
+try { StaticCampaign.boot(); } catch(e){}
 
 const state = {
   mode:null,            // 'serial' | 'sim'

@@ -77,6 +77,14 @@
         <input id="gm-says" placeholder="GM says\u2026" style="width:170px;" aria-label="GM ruling text">
         <button id="btn-says">RULE</button>
       </div>
+      <h4>CAMPAIGN</h4>
+      <div id="campaign-info" class="footnote" style="text-align:left; margin-bottom:6px;"></div>
+      <div class="minibtns">
+        <button id="camp-export">EXPORT PACK</button>
+        <button id="camp-import">IMPORT…</button>
+        <button id="camp-reset" title="back to the built-in Six Houses">RESET</button>
+        <input id="camp-file" type="file" accept="application/json,.json" style="display:none">
+      </div>
       <h4>SESSION</h4>
       <div class="minibtns">
         <label style="color:var(--dim); font-size:10px; align-self:center;"><input type="checkbox" id="job-settled"> the job settled</label>
@@ -88,6 +96,7 @@
   </div>
 </div>
 <script src="js/content.js"></script>
+<script src="js/campaign.js"></script>
 <script src="js/console.js"></script>
 </body>
 </html>

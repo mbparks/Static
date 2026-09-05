@@ -16,7 +16,7 @@ subfolder of any host and runs offline.
 
 > **New here? Read [the story](the-shelf-at-ropewalk.md) first** — a short
 > piece that teaches the world and how the Shard works before a single rule.
-> Then open `book.html` (or `rulebook-v0.11.md`) for the full game.
+> Then open `book.html` (or `rulebook-v1.0-rc.md`) for the full game.
 
 ---
 
@@ -74,13 +74,14 @@ One for players, Part Three for the GM).
 
 | Path | What it is |
 |---|---|
-| `rulebook-v0.11.md` / `book.html` | The full rulebook — world, rules, a session walkthrough, GM tools, and a hardware appendix. |
+| `rulebook-v1.0-rc.md` / `book.html` | The full rulebook — world, rules, a session walkthrough, GM tools, and a hardware appendix. |
 | `the-shelf-at-ropewalk.md` / `story.html` | A short story that teaches the world. Start here. |
 | `index.html` | The website front door. |
 | `forge.html` | Character creation as a rite; consecrates a real Shard over USB, or runs in effigy. Prints the character card. |
 | `status.html` | "The Record" — reads a Shard's soul back. |
 | `console.html` / `table.html` | The GM's console and the projected table view. |
 | `static-character-sheet.pdf` | A print-and-pencil character sheet: circle the presets, fill the blanks, with the House sigils. |
+| `campaigns/` | Campaign packs (JSON) — the authoring format; includes an example. |
 | `firmware/` | ESP32 firmware for the player Shard and the GM dock (WIP). |
 | `docs/` | Hardware diagrams, concept art, image prompts, and mockups. |
 
@@ -109,7 +110,7 @@ For local work: `python3 -m http.server` in this folder, then
 | `status.html` | "The Record." Shows a Shard its reflection — reads a real Shard's soul back over USB, or the effigy soul the Forge saved in this browser. |
 | `console.html` | The GM's brain. Party & opposition, zones with tags, initiative rail, turns, the sweep (ember clocks), heat with thresholds, ice (clear paths enforced), the two-step death rite, oaths, rulings, clocks, and jack-out with the XP tally. Autosaves every event. |
 | `table.html` | The projected view. A dumb renderer: ambient / scene / combat modes, flash takeovers (ice, downs, oaths, deaths), end-credits roll. Open it from the console ("OPEN TABLE VIEW") and drag it to the external display. |
-| `book.html` | The full rulebook, rendered. Regenerated from `rulebook-v0.11.md`, which ships alongside as the source of truth. |
+| `book.html` | The full rulebook, rendered. Regenerated from `rulebook-v1.0-rc.md`, which ships alongside as the source of truth. |
 
 ## Architecture
 
@@ -195,6 +196,11 @@ Still maturing (flagged WIP in the code):
   routing in the dock firmware.
 - A parametric, printable token base (`docs/hardware/shard-base.scad`) and a
   bill of materials (`docs/hardware/BOM.md`).
+- Campaign packs: the console exports/imports the whole content pipeline
+  (classes, chrome, tags, ice, enemies) as a shareable JSON file, so GMs build
+  their own street on the shared world. The Forge honours packs too.
+- Rulebook content complete (v1.0-rc): all Part Three chapters, plus the cant,
+  chrome, and gear/price catalogs.
 
 ### Next — first real hardware session
 1. **Build one.** Source the parts (`docs/hardware/BOM.md`), print the base
@@ -212,11 +218,9 @@ Still maturing (flagged WIP in the code):
    the provenance promise, made real. (Design is in Part Three ch.0.)
 6. **Witnesses and bonds.** First-jack-in co-signing and base-to-base trade —
    the first true multi-Shard transactions.
-7. **Console authoring / campaign files.** Import and export the content pack
-   (tags, nodes, ice, enemies, classes) so GMs build and trade their own
-   worlds — the chapter 0 authoring promise as a feature.
-8. **Rulebook to v1.0.** Part Three chapter 6 (campaigns / organized play),
-   the cant and chrome catalogs, and prices.
+7. **Signing everywhere, then v1.0.** With the trust layer done and a real
+   bench playtest behind it, settle the tuning knobs and cut the rulebook from
+   v1.0-rc to v1.0.
 
 ### Always
 - Keep the paper game whole. Every device is amplification; the fiction
@@ -330,7 +334,7 @@ per House; drawn as pages from a Recollection field guide.
 
 ## The book
 
-`rulebook-v0.11.md` is canonical. `book.html` is generated from it. If you
+`rulebook-v1.0-rc.md` is canonical. `book.html` is generated from it. If you
 edit the rules, edit the markdown and regenerate — the rendered page is a
 build artifact, not a second source of truth. The Recollectors would insist.
 

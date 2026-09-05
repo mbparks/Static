@@ -411,7 +411,56 @@ $('wipe').addEventListener('click', () => {
 });
 
 /* ── boot ── */
+StaticCampaign.boot();   // load any saved campaign pack over the built-in content
 $('add-cls').innerHTML = CONTENT.classes.map(c=>`<option value="${c.id}">${c.name}</option>`).join('');
 $('add-foe').innerHTML = CONTENT.enemies.map(e=>`<option value="${e.id}">${e.name}</option>`).join('');
 $('scene-name').value = S.scene || '';
 render(); broadcast();
+
+
+// ---- campaign packs (chapter-0 authoring) ----------------------------
+function renderCampaignInfo(){
+  const el = document.getElementById('campaign-info'); if (!el) return;
+  const c = StaticCampaign.counts();
+  el.innerHTML = '<b style="color:var(--text-secondary)">' + StaticCampaign.name() + '</b><br>' +
+    c.classes + ' classes · ' + c.chrome + ' chrome · ' + c.tags + ' tags · ' +
+    c.ice + ' ice · ' + c.enemies + ' enemies';
+}
+(function wireCampaign(){
+  const ex = document.getElementById('camp-export');
+  const im = document.getElementById('camp-import');
+  const rs = document.getElementById('camp-reset');
+  const fi = document.getElementById('camp-file');
+  if (!ex) return;
+  ex.addEventListener('click', () => {
+    const name = prompt('Name this campaign pack:', StaticCampaign.name());
+    if (name === null) return;
+    const author = prompt('Author (optional):', '') || '';
+    StaticCampaign.exportFile(name, author);
+  });
+  im.addEventListener('click', () => fi.click());
+  fi.addEventListener('change', () => {
+    const f = fi.files[0]; if (!f) return;
+    const r = new FileReader();
+    r.onload = () => {
+      const res = StaticCampaign.importPack(r.result);
+      if (!res.ok){ log('campaign import failed: ' + res.error, 'warn'); render(); return; }
+      log('loaded campaign: ' + (res.name || 'unnamed'), 'good');
+      // refresh the dropdowns that read CONTENT
+      $('add-cls').innerHTML = CONTENT.classes.map(c=>`<option value="${c.id}">${c.name}</option>`).join('');
+      $('add-foe').innerHTML = CONTENT.enemies.map(e=>`<option value="${e.id}">${e.name}</option>`).join('');
+      renderCampaignInfo(); render();
+    };
+    r.readAsText(f);
+    fi.value = '';
+  });
+  rs.addEventListener('click', () => {
+    if (!confirm('Reset to the built-in Six Houses? Your loaded pack stays in its file.')) return;
+    StaticCampaign.reset();
+    $('add-cls').innerHTML = CONTENT.classes.map(c=>`<option value="${c.id}">${c.name}</option>`).join('');
+    $('add-foe').innerHTML = CONTENT.enemies.map(e=>`<option value="${e.id}">${e.name}</option>`).join('');
+    log('campaign reset to built-in', '');
+    renderCampaignInfo(); render();
+  });
+  renderCampaignInfo();
+})();

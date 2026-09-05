@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>THE BOOK — STATIC Rulebook v0.11</title>
 <link rel="icon" type="image/png" href="docs/sigils/favicon.png">
+<title>THE BOOK — STATIC Rulebook v1.0-rc</title>
 <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
 <p><a class="home" href="index.html">&larr; STATIC</a></p>
 <h1 id="static">STATIC</h1>
 <h3 id="a-tabletop-game-of-chrome-corruption-and-the-machines-that-remember-us">A tabletop game of chrome, corruption, and the machines that remember us</h3>
-<p><strong>The Rulebook — draft v0.11</strong> <em>(working title; all names provisional)</em></p>
+<p><strong>The Rulebook — v1.0-rc</strong> <em>(release candidate; working title)</em> <em>(working title; all names provisional)</em></p>
 <p><em>One book for everyone. Part One teaches you to play. Part Two walks through a session beat by beat. Part Three is for the Gamemaster — players are welcome to read it, but the mysteries in there will land harder if you don't.</em></p>
 <hr>
 <h1 id="part-one-playing">PART ONE — PLAYING</h1>
@@ -190,6 +190,19 @@
 </ul>
 <p><strong>Advance moves:</strong> Chorale (one cant affects an adjacent zone too), Excommunicate (Burn a node using SOUL instead of WIRE), Hymn of the Unbroken (allies in your zone gain +1 Firewall while you stand), Plainsong (once per session, ask the GM one true thing; the Choir answers — mark 1 Static).</p>
 <p><strong>Signature — Anathema:</strong> point your figure at one enemy. That enemy's Firewall is 0 against your cants until they leave your facing arc. Facing as liturgy.</p>
+<p><strong>The cant catalog.</strong> Cants are spoken in SOUL. A <strong>hit</strong> works the cant; a <strong>miss</strong> always marks Static, and often does worse (the GM says). A Cantor knows the starting cants below and copies more into their book over a career. Every cast, hit or miss, is a sentence in the enemy's tongue — use them, and know what using them costs.</p>
+<table>
+<tr><th>cant</th><th>does</th><th>on a miss</th></tr>
+<tr><td>Litany of Closing</td><td>seal one node or door; can't be hooked or opened until you leave the zone or fall</td><td>it seals with <em>you</em> on the wrong side; mark 1 Static</td></tr>
+<tr><td>Voice of Ash</td><td>enemies in your zone take −1 to hit until your next turn</td><td>your own crew hears it too; mark 1 Static</td></tr>
+<tr><td>Absolution</td><td>touch bases with an ally: purge one ice from them, you take 1 Static</td><td>the ice jumps to you instead; mark 2 Static</td></tr>
+<tr><td>Hush the Wire</td><td>one powered node in your zone goes dark for a round</td><td>it wakes something else; mark 1 Static, GM gains 1 heat</td></tr>
+<tr><td>Open the Way</td><td>force one sealed/locked node open</td><td>it opens <em>both</em> ways; mark 1 Static, something notices</td></tr>
+<tr><td>Reading</td><td>ask the GM one true thing about a node or the Mesh here</td><td>the answer is true and unwanted; mark 1 Static</td></tr>
+<tr><td>Plainsong <em>(advance)</em></td><td>ask the Choir one true thing; the answer comes in a voice</td><td>the Choir answers, and now it knows your voice; mark 2 Static</td></tr>
+<tr><td>Unmaking <em>(advance)</em></td><td>Burn a node using SOUL instead of WIRE, no hooks needed</td><td>the unmaking turns inward; take 2 damage and mark 2 Static</td></tr>
+</table>
+<p><em>Old cants copied down the generations drift — a book's version may say a little more than the caster intends. The GM decides what a well-worn cant has become.</em></p>
 <hr>
 <h3 id="fixer">FIXER</h3>
 <p><em>Knows a guy. Is the guy.</em></p>
@@ -265,9 +278,58 @@
 <h2 id="10-chrome">10. Chrome</h2>
 <p>Chrome is installed machinery: optic suites, reflex shunts, dermal plate, jack ports, worse. Each piece grants what it grants — and <strong>every installed piece lowers your Firewall by 1</strong>. There is no chrome without surface. A fully chromed Ronin is a fortress of meat and a wide-open door in the Mesh.</p>
 <p>Chrome is bought with money and surgery (see your Stitch), listed on your card, and factored into the printed Firewall arithmetic where everyone can see what you paid.</p>
+<h3 id="chrome-catalog">Chrome catalog</h3>
+<p>Every piece costs <strong>−1 Firewall</strong>, always. Prices are a Chirurgeon's baseline in yen; a Stitch or a favor can move them. Two pieces is the creation cap; more comes later, at a price in surface and in song.</p>
+<table>
+<tr><th>chrome</th><th>does</th><th>yen</th></tr>
+<tr><td>Optic suite</td><td>low-light vision; record what you see</td><td>¥300</td></tr>
+<tr><td>Reflex shunt</td><td>+1 EDGE for initiative only</td><td>¥350</td></tr>
+<tr><td>Dermal weave</td><td>+1 Armor, always on, under the skin</td><td>¥450</td></tr>
+<tr><td>Subdermal cache</td><td>conceal one small item inside your body</td><td>¥200</td></tr>
+<tr><td>Voicebox</td><td>reproduce any voice you've heard; whisper on comms</td><td>¥300</td></tr>
+<tr><td>Jack port</td><td>deep-jack without a cable; +1 to sustained Twists</td><td>¥400</td></tr>
+<tr><td>Wired reflexes</td><td>once per scene, take your turn first</td><td>¥700</td></tr>
+<tr><td>Dead-hand chip</td><td>at 0 HP, act once more before going Down</td><td>¥800</td></tr>
+<tr><td>Second heart</td><td>+2 max HP</td><td>¥500</td></tr>
+<tr><td>Ghost-grip</td><td>climb/cling any surface; +1 to escape holds</td><td>¥350</td></tr>
+</table>
+<p><em>The deeper chrome (wired reflexes and below) is powerful and porous — each piece is another door, and the fully chromed learn that the song knocks on all of them.</em></p>
 <h2 id="11-gear">11. Gear</h2>
 <p>Gear is deliberately light. Weapons have a damage number and a stat that fires them. Armor has a rating. Consumables are checkboxes on your card — strike them with a pencil; next session's print already knows. Big transferable items exist as physical chits at the table: handing one over is a trade, and a trade is two bases touched together while the consoles witness it.</p>
 <p>Money is yen — the cred chit line on your card, denominated in the old world's last trusted paper. The Fixer will explain the rest.</p>
+<h3 id="weapons">Weapons</h3>
+<table>
+<tr><th>weapon</th><th>dmg</th><th>fired/swung by</th><th>yen</th></tr>
+<tr><td>Fists, improvised</td><td>1</td><td>MEAT</td><td>—</td></tr>
+<tr><td>Knife / baton</td><td>1</td><td>MEAT or EDGE</td><td>¥40</td></tr>
+<tr><td>Holdout pistol</td><td>1</td><td>EDGE</td><td>¥120</td></tr>
+<tr><td>Machine pistol</td><td>2</td><td>EDGE</td><td>¥250</td></tr>
+<tr><td>Mono-edge blade</td><td>3</td><td>MEAT</td><td>¥400</td></tr>
+<tr><td>Rifle (reach: any zone)</td><td>2</td><td>EDGE</td><td>¥350</td></tr>
+<tr><td>Shotgun (same zone only, +1 dmg point-blank)</td><td>3</td><td>EDGE</td><td>¥300</td></tr>
+<tr><td>Bone saw / heavy tool</td><td>2</td><td>MEAT, counts as a tool</td><td>¥150</td></tr>
+</table>
+<h3 id="armor">Armor</h3>
+<table>
+<tr><th>armor</th><th>rating</th><th>yen</th></tr>
+<tr><td>Padded / work gear</td><td>1</td><td>¥80</td></tr>
+<tr><td>Armored coat</td><td>2</td><td>¥300</td></tr>
+<tr><td>Plate rig (−1 to sprint rolls)</td><td>3</td><td>¥700</td></tr>
+<tr><td>Dermal weave (chrome)</td><td>+1, always on</td><td>see chrome</td></tr>
+</table>
+<h3 id="kit-and-consumables">Kit and consumables</h3>
+<table>
+<tr><th>item</th><th>does</th><th>yen</th></tr>
+<tr><td>Stim</td><td>clear 1 condition or +1d on one roll; one use</td><td>¥30</td></tr>
+<tr><td>Trauma kit</td><td>lets a non-Stitch attempt Field Work at −1</td><td>¥150</td></tr>
+<tr><td>Deck</td><td>2 process slots; the Runner's weapon</td><td>¥400</td></tr>
+<tr><td>Grapple line</td><td>reach ELEVATED without the full-Move cost, once</td><td>¥60</td></tr>
+<tr><td>Cold-iron lockbox</td><td>Fabricator-sealed; its contents can't be Meshed</td><td>¥250</td></tr>
+<tr><td>Portable light</td><td>turns a DARK zone lit (and its nodes live)</td><td>¥40</td></tr>
+<tr><td>Delve permit (Christianity Inc.)</td><td>legal passage past a cordon</td><td>¥100+</td></tr>
+<tr><td>Cant-book (blank)</td><td>paper to copy a cant into; Cantors only</td><td>¥80</td></tr>
+</table>
+<p><em>Prices are Ropewalk-market baselines. Every enclave runs its own, every House marks up its own trade, and the Fixer knows where the number bends.</em></p>
 <h2 id="12-the-mesh-what-everyone-must-know">12. The Mesh (what everyone must know)</h2>
 <p>You don't need the Runner's chapter to survive here. You need this:</p>
 <ul>
@@ -327,7 +389,7 @@
 <p>When your character dies and the table confirms it, the GM's console writes the death record and your Shard locks — permanently, cryptographically, actually. The final character card prints with a black band and the record's seal. Keep the Shard. Keep the card. Bring a new character next week; the crew's Shards will remember the old one in their logs, because they were witnesses, and witnesses don't forget here.</p>
 <p>Some players shelve their locked Shards in a row. That shelf is your campaign's war memorial. STATIC intends for you to have one.</p>
 <hr>
-<p><em>End of Part One. Everything provisional. Not yet covered: full cant list, chrome catalog beyond the starter menu, gear prices. Open tuning questions: risk die as d6 vs. diceless sprint cost, Brace at +1/+1, Down clock flat 3 vs. MEAT-derived.</em></p>
+<p><em>End of Part One. Content complete. Open tuning questions to settle in playtest: risk die as d6 vs. diceless sprint cost, Brace at +1/+1, Down clock flat 3 vs. MEAT-derived.</em></p>
 <hr>
 <h1 id="part-two-the-rituals">PART TWO — THE RITUALS</h1>
 <p>This document is the screenplay of the game. Each beat is written in three voices, because STATIC's core promise is that they stay in sync:</p>
@@ -425,7 +487,7 @@
 <hr>
 <h1 id="part-three-running-the-game">PART THREE — RUNNING THE GAME</h1>
 <p><em>For the Gamemaster. Players may read on, but some doors are better opened at the table.</em></p>
-<p><strong>Every chapter but 6 is finished</strong> <em>(chapters 7 Seeds, 8 The wider ruin, and 9 Annals, added and finished).</em></p>
+<p><strong>All Part Three chapters are finished</strong> <em>(0–9).</em></p>
 <h2 id="0-the-spine-the-world-and-the-street">0. The spine, the world, and the street</h2>
 <p>STATIC is a framework with a universe. We give you three layers, and knowing which layer you're standing on is the whole art of running this game.</p>
 <p><strong>The spine</strong> is fixed mechanics. It is deliberately small, and every item on it is there for one of two reasons: the hardware depends on it, or a character walking into a stranger's table depends on it.</p>
@@ -452,7 +514,7 @@
 <li><strong>Running the Mesh</strong> — written below.</li>
 <li><strong>The opposition</strong> — written below.</li>
 <li><strong>SHEPHERD</strong> — written below: the world's deepest truths, stated plainly for the GM. Canon. One answer, every table. Players who read it will find the game's dread replaced by a different, heavier one.</li>
-<li><strong>Campaigns and the record</strong> — using the Shard ledger as story: debts, oaths, Red Ledgers, memorial shelves, and characters visiting other tables.</li>
+<li><strong>Campaigns and the record</strong> — written below.</li>
 <li><strong>Seeds</strong> — written below.</li>
 <li><strong>The wider ruin</strong> — written below.</li>
 <li><strong>Annals</strong> — written below.</li>
@@ -573,6 +635,26 @@
 <li><strong>Ration it.</strong> Heat, at street level, is House security. Only in the Fold, and only when you mean it, should players realize the thing tallying their intrusions is older and fonder than any House. Once or twice a campaign, the red mote on someone's ring should be its regard.</li>
 <li><strong>The name is a table event.</strong> When an NPC says SHEPHERD aloud, plainly, it should be the loudest word of the session. Spend it like Static: rarely, permanently.</li>
 </ul>
+<h2 id="6-campaigns-and-the-record">6. Campaigns and the record</h2>
+<p>The Shard keeps a signed history, and that history is the campaign's real engine. Run the ledger as story and the game largely plots itself.</p>
+<h3 id="the-record-as-plot">The record as plot</h3>
+<p>Every session writes lines: wounds survived, jobs settled, oaths sworn, debts made, Static gained, the dead witnessed. Read last session's lines before you prep the next, and the hooks are already there — an unpaid debt is a job, a broken oath is a rival, a climbing Static track is a clock you didn't have to set. The best STATIC campaigns don't invent forward; they collect on what the record already holds.</p>
+<ul>
+<li><strong>Debts</strong> the crew owes get called in at the worst time. Debts owed <em>to</em> the crew are favors they can spend — a Fixer's whole economy.</li>
+<li><strong>Oaths</strong> are load-bearing because the Shard countersigns them. A sworn oath is a promise two records keep; breaking one is a line the whole table can later read, and rivals can verify.</li>
+<li><strong>Red Ledgers</strong> (the Ronin move, and the instinct behind it): the record remembers who harmed whom. Let enemies remember too.</li>
+<li><strong>The memorial shelf</strong> is the campaign's spine. When a character dies, their locked Shard joins the shelf, and their witness links stay legible in the survivors' records forever. A campaign is, in the end, the shelf it builds.</li>
+</ul>
+<h3 id="advancement-over-a-campaign">Advancement over a campaign</h3>
+<p>XP is counted, not awarded (Part One, ch.9). Over a campaign that means growth tracks <em>what the crew actually did</em>, session by session, and never needs a milestone chart. Expect an advance every two or three sessions at the four-point pace. Let players cross-train into other classes' moves with your blessing once they're a few advances deep — a Runner who takes a Cantor move is a character with a story reason to have learned the tongue, and the Static that follows is that story's price.</p>
+<h3 id="organized-play-the-traveling-character">Organized play — the traveling character</h3>
+<p>This is the promise the whole design exists to keep: a character can leave their home table and play at a stranger's, and be trusted, because the Shard proves itself. The covenant that makes it work:</p>
+<p><strong>What the visiting player brings.</strong> Their Shard, and its whole verifiable record. Any console reads it, walks the signature chain, and confirms the character is legitimate — stats, advances, Static, deeds, all as earned. No sheet to forge, no honor system.</p>
+<p><strong>What the host GM honors.</strong> A verified character is real as-is: their level, their scars, their Static, their gear of record. You don't re-point them or roll them back. Their history happened.</p>
+<p><strong>What the host GM may refuse.</strong> Your street is yours. You may decline homebrew moves or gear that don't exist in your campaign (offer the nearest equivalent), set the mission and its stakes, and rule on anything ambiguous — the record proves the character, not the campaign they came from. And a broken oath or a black mark in the record travels too; a host is within rights to let an enclave remember it.</p>
+<p><strong>What crosses back home.</strong> Whatever the visiting session writes — XP, wounds, a new oath, a death — is signed like any other session and is real when the character goes home. A character can die at a convention table a thousand kilometers from their crew, and their crew's Shards will carry the witness of it. That is not a bug. That is the game.</p>
+<h3 id="campaign-packs-the-console">Campaign packs (the console)</h3>
+<p>Everything on your street — classes, chrome, zone tags, ice, enemies — is data the console can export as a <strong>campaign pack</strong>, a single file you can edit, share, and load. The built-in Six Houses content is itself a pack; yours sits equal beside it. A pack overrides the kinds of content it defines and inherits the rest, so you can ship only your enemies and keep everything else. Trade packs the way tables once traded adventure modules — the world stays ours; the street becomes yours, and portable.</p>
 <h2 id="7-seeds">7. Seeds</h2>
 <p>Twelve situations, deliberately unfinished. Each is tensions with the pin pulled: pick one, attach a clock, decide what everyone in it <em>wants</em>, and run. None of them have answers here, because the answers are the game.</p>
 <p><strong>The last witness.</strong> Harrow Enclave's final Burn survivor is dying, and she has stopped taking her quiet. Recollection wants a deathbed deposition. Christianity Inc. wants last rites — and the room sealed. The Chirurgeons want an hour alone with her chrome. She'll only talk to whoever brings her granddaughter home from the ruins first. What does she know that three Houses will race for? And what else has noticed she's started talking?</p>
@@ -758,7 +840,7 @@
 <p><strong>Builder's notes.</strong> The WS2812B is happiest at 5 volts; for a 3.3-volt battery build, the SK6812 variant is the cleaner drop-in and wants no level shifter. Cap ring brightness in firmware — twenty-four LEDs at full white will brown out a small cell, which is one more reason the ring vocabulary breathes dim and slow. The dock is the same board minus ring, battery, and pad: it lives on the laptop's USB and does nothing but relay. Exact pin names vary by module; GPIO5 and TOUCH0 here are examples, not scripture.</p>
 <p><em>The device contract — the functions the firmware must match so a name lights the ring in the right order, and a death runs it backward — lives in the project's code, not this book: <code>firmware/shared/static_contract.h</code>, ported byte-for-byte from the web Forge. WIP Arduino sketches for the Shard and the dock live under <code>firmware/</code>. See the repository.</em></p>
 <hr>
-<p><em>STATIC Rulebook draft v0.11 — one book, three parts, all of it provisional.</em></p>
+<p><em>STATIC Rulebook v1.0-rc — one book, three parts. Content complete; tuning open.</em></p>
 <p><a class="home" href="index.html">&larr; STATIC</a></p>
 </div>
 </body>

@@ -1,0 +1,144 @@
+{
+  "static_campaign": 1,
+  "name": "Gloaming & the Cordon (example pack)",
+  "author": "Green Shoe (template)",
+  "updated": "2026-09-05",
+  "content": {
+    "enemies": [
+      {
+        "id": "legbreaker",
+        "name": "Legbreaker",
+        "hp": 4,
+        "armor": 1,
+        "fw": 1,
+        "dice": 2,
+        "dmg": 2,
+        "move": "gang up: +1 per ally engaged",
+        "want": "to get paid without dying"
+      },
+      {
+        "id": "hound",
+        "name": "Ferrous hound",
+        "hp": 5,
+        "armor": 2,
+        "fw": null,
+        "dice": 3,
+        "dmg": 2,
+        "move": "cold iron body: cannot be Meshed",
+        "want": "what its handler points at"
+      },
+      {
+        "id": "outrider",
+        "name": "Drover outrider",
+        "hp": 6,
+        "armor": 1,
+        "fw": 2,
+        "dice": 2,
+        "dmg": 2,
+        "move": "destroys the case before losing it",
+        "want": "the cargo through"
+      },
+      {
+        "id": "icebreaker",
+        "name": "Icebreaker",
+        "hp": 8,
+        "armor": 0,
+        "fw": 5,
+        "dice": 3,
+        "dmg": 0,
+        "move": "runs ice as its attacks",
+        "want": "intruders expelled, methods erased"
+      },
+      {
+        "id": "listener",
+        "name": "Ninefields listener",
+        "hp": 5,
+        "armor": 0,
+        "fw": 2,
+        "dice": 2,
+        "dmg": 1,
+        "move": "miscast liturgy: cants always work, always mark it",
+        "want": "you to hear what it hears"
+      },
+      {
+        "id": "shell",
+        "name": "Harmonized shell",
+        "hp": 9,
+        "armor": 2,
+        "fw": 6,
+        "dice": 3,
+        "dmg": 3,
+        "move": "the Hush, once per round, no roll below FW 3",
+        "want": "to gather, gently"
+      },
+      {
+        "id": "congregant",
+        "name": "Congregant pilgrim",
+        "hp": 4,
+        "armor": 0,
+        "fw": 3,
+        "dice": 2,
+        "dmg": 1,
+        "move": "sings: allies who hear it mark 1 Static",
+        "want": "you to stop fighting the song"
+      },
+      {
+        "id": "warden",
+        "name": "Line-warden",
+        "hp": 6,
+        "armor": 1,
+        "fw": 2,
+        "dice": 2,
+        "dmg": 2,
+        "move": "knows the cordon: ignores FOLD penalties",
+        "want": "the quarantine held"
+      }
+    ],
+    "tags": [
+      {
+        "id": "POWERED",
+        "desc": "nodes here are live: hookable, twistable, burnable"
+      },
+      {
+        "id": "DARK",
+        "desc": "no nodes; ranged in/out at −1"
+      },
+      {
+        "id": "SHROUDED",
+        "desc": "attacks into this zone −1"
+      },
+      {
+        "id": "ELEVATED",
+        "desc": "ranged from here +1 down; reaching it costs the Move"
+      },
+      {
+        "id": "UNSTABLE",
+        "desc": "sprint fails on 1–4; Burns collapse something"
+      },
+      {
+        "id": "FLOODED",
+        "desc": "MEAT to sprint; twisted power bites everyone in the water"
+      },
+      {
+        "id": "CRAMPED",
+        "desc": "no ranged attacks; blades, hands, and cants only"
+      },
+      {
+        "id": "LOUD",
+        "desc": "talk doesn’t carry; Burns add 1 less heat"
+      },
+      {
+        "id": "COLD IRON",
+        "desc": "no Mesh effects; hooks purge at the threshold"
+      },
+      {
+        "id": "FOLD",
+        "desc": "Static marks double; heat 7 answers differently"
+      },
+      {
+        "id": "CORDON",
+        "desc": "church quarantine: leaving costs your whole turn and a permit"
+      }
+    ]
+  }
+}
