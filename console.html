@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>THE CONSOLE — STATIC</title>
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<div class="wrap" style="max-width:1100px;">
+  <div class="con-top">
+    <div>
+      <a class="footnote" href="index.html" style="text-decoration:none;">&larr; STATIC</a>
+      <span class="t" style="margin-left:12px;">THE CONSOLE</span>
+    </div>
+    <div class="minibtns">
+      <input id="scene-name" placeholder="scene — where and when" aria-label="Scene name">
+      <button id="mode-ambient">AMBIENT</button>
+      <button id="mode-scene">SCENE</button>
+      <button id="mode-combat" disabled title="starts with initiative">COMBAT</button>
+      <button class="primary" id="open-table">OPEN TABLE VIEW</button>
+    </div>
+  </div>
+
+  <div class="con-grid">
+    <!-- ── column: the table ── -->
+    <div class="col">
+      <h4>PARTY</h4>
+      <div id="party"></div>
+      <div class="minibtns">
+        <button id="add-effigy" title="reads the soul the Forge left in this browser">+ FROM EFFIGY</button>
+        <select id="add-cls" aria-label="Class for new character"></select>
+        <input id="add-name" placeholder="name" style="width:90px;" aria-label="New character name">
+        <button id="add-pc">+ ADD</button>
+      </div>
+      <h4>OPPOSITION</h4>
+      <div id="opposition"></div>
+      <div class="minibtns">
+        <select id="add-foe" aria-label="Enemy type"></select>
+        <button id="add-enemy">+ ADD</button>
+      </div>
+      <h4>ZONES</h4>
+      <div id="zones"></div>
+      <div class="minibtns"><button id="add-zone">+ ZONE</button></div>
+    </div>
+
+    <!-- ── column: resolve ── -->
+    <div class="col">
+      <h4>RESOLVE</h4>
+      <div id="resolve"></div>
+      <h4>COMBAT</h4>
+      <div class="minibtns" id="combat-controls"></div>
+      <h4>HEAT</h4>
+      <div class="heatbar" id="heatbar"></div>
+      <div class="minibtns">
+        <button id="heat-up">+1 HEAT</button>
+        <button id="heat-dn">\u22121</button>
+        <span id="heat-note" class="footnote" style="align-self:center;"></span>
+      </div>
+      <h4>CLOCKS</h4>
+      <div id="clocks"></div>
+      <div class="minibtns">
+        <input id="clock-name" placeholder="what approaches" style="width:130px;" aria-label="Clock name">
+        <select id="clock-segs" aria-label="Clock segments"><option>4</option><option>6</option><option>8</option></select>
+        <label style="color:var(--dim); font-size:10px; align-self:center;"><input type="checkbox" id="clock-pub" checked> public</label>
+        <button id="add-clock">+ CLOCK</button>
+      </div>
+    </div>
+
+    <!-- ── column: the record ── -->
+    <div class="col">
+      <h4>THE RECORD (this session)</h4>
+      <div class="loglist" id="log"></div>
+      <div class="minibtns" style="margin-top:8px;">
+        <input id="gm-says" placeholder="GM says\u2026" style="width:170px;" aria-label="GM ruling text">
+        <button id="btn-says">RULE</button>
+      </div>
+      <h4>SESSION</h4>
+      <div class="minibtns">
+        <label style="color:var(--dim); font-size:10px; align-self:center;"><input type="checkbox" id="job-settled"> the job settled</label>
+        <button id="end-session">JACK OUT</button>
+        <button class="danger" id="wipe" title="clears saved console state">NEW SESSION</button>
+      </div>
+      <div class="footnote" id="save-note" style="text-align:left;"></div>
+    </div>
+  </div>
+</div>
+<script src="js/content.js"></script>
+<script src="js/console.js"></script>
+</body>
+</html>

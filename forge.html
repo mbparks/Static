@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>THE FORGE — STATIC</title>
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ══════════ THRESHOLD ══════════ -->
+  <section class="screen active" id="threshold">
+    <div class="kicker">STATIC // RITE OF CONSECRATION</div>
+    <div class="h-title">THE FORGE</div>
+    <div class="sub">An unconsecrated Shard is a blank thing. Bring one.</div>
+    <div class="panel" id="detect-panel">
+      <div class="ok" id="detect-head">◈ NO SHARD DETECTED</div>
+      <div class="body" id="detect-body">Connect a Shard by cable, or perform the rite in effigy —<br>
+        a simulated Shard, for learning the way. The record it makes<br>is real; the object is not, yet.</div>
+    </div>
+    <div class="btn-row">
+      <button id="btn-serial">CONNECT A SHARD</button>
+      <button class="primary" id="btn-sim">PERFORM THE RITE IN EFFIGY</button>
+    </div>
+    <div id="serial-err"></div>
+    <div class="footnote" style="margin-top:22px;">
+      Requires a Web Serial browser (Chrome or Edge, desktop) for a physical Shard.<br>
+      A Shard already carrying a soul will not be reforged here — it will be shown its record instead.
+    </div>
+  </section>
+
+  <!-- ══════════ BUILDER (class / stats / chrome / flesh) ══════════ -->
+  <section class="screen" id="builder">
+    <div class="builder">
+      <nav class="rail" id="rail" aria-label="Rite progress"></nav>
+      <div id="step-host"></div>
+      <aside class="record" id="record" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <!-- ══════════ THE NAME ══════════ -->
+  <section class="screen" id="name-screen">
+    <div id="name-epigraph">THE FIRST PERSON TO SPEAK A NAME<br><br>SHOULD BE THE ONE WHO WILL CARRY IT</div>
+    <input id="name-input" maxlength="18" autocomplete="off" spellcheck="false" aria-label="Character name">
+    <div id="name-hint">say it out loud as you type it. yes, really.</div>
+    <button id="name-go">ENTER, WHEN IT IS SAID</button>
+    <div id="name-err">a name is required. even the ruins have names.</div>
+  </section>
+
+  <!-- ══════════ IGNITION ══════════ -->
+  <section class="screen" id="ignition">
+    <div class="kicker">THE NAME HAS BEEN GIVEN</div>
+    <div id="ign-name"></div>
+    <div id="rite-log" aria-live="polite"></div>
+    <canvas id="ring-stage" width="260" height="260" aria-label="First ignition of the ring"></canvas>
+    <div class="panel" id="ring-note">
+      <div class="big" id="ring-note-big">WATCH.</div>
+      <div class="body" id="ring-note-body">The ring is lighting for the first time, in an order that belongs
+        to this name alone. You will not see it again until the day it runs backward.</div>
+    </div>
+    <div id="genesis-line">genesis <span id="genesis-hash">…</span> · witnesses: none yet — find a crew</div>
+    <div class="btn-row" id="ign-actions">
+      <button class="primary" id="btn-print">PRINT THE FIRST CARD</button>
+      <button id="btn-done">THE RITE IS COMPLETE</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- ══════════ PRINTABLE CARD ══════════ -->
+<div class="print-area" id="print-area"></div>
+<script src="js/content.js"></script>
+<script src="js/device.js"></script>
+<script src="js/rite.js"></script>
+</body>
+</html>
