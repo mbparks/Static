@@ -422,3 +422,13 @@ body[data-uimode="combat"] .zonemap.only-combat{display:grid !important;}
 .loglist .t{color:#566076; margin-right:6px;}
 .rule-row{margin-top:10px; padding-top:10px; border-top:1px solid #232838;}
 .rule-row input{flex:1; padding:7px 9px;}
+
+/* ── circuit backdrop: fixed canvas behind everything ── */
+.backdrop{position:fixed; inset:0; z-index:0; pointer-events:none; display:block;}
+body{position:relative;}
+/* lift page content above the canvas */
+.wrap, .con-app, .tv-stage, .tv-flash{position:relative; z-index:1;}
+/* the console's panels get a whisper of translucency so traces ghost through */
+body.con .panel, body.con .con-bar, body.con .hero, body.con .zm{background-color:rgba(17,20,27,0.92);}
+body.con .combat-controls .big{background-color:rgba(17,20,27,0.92);}
+.door, .panel, .card, .tv-zone, .tv-card{position:relative;}
