@@ -432,3 +432,8 @@ body{position:relative;}
 body.con .panel, body.con .con-bar, body.con .hero, body.con .zm{background-color:rgba(17,20,27,0.92);}
 body.con .combat-controls .big{background-color:rgba(17,20,27,0.92);}
 .door, .panel, .card, .tv-zone, .tv-card{position:relative;}
+
+/* ── RF waterfall: right ~20% of the screen, fades into the board ── */
+.waterfall{position:fixed; top:0; right:0; height:100vh; z-index:0; pointer-events:none; display:block; opacity:.55;
+  -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 38%, #000 100%);
+          mask-image:linear-gradient(to right, transparent 0%, #000 38%, #000 100%);}

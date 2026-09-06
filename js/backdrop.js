@@ -140,3 +140,116 @@
   resize();
   if (!reduced) { last = performance.now(); raf = requestAnimationFrame(frame); }
 })();
+
+// =====================================================================
+//  RF waterfall — a spectrum display down the right ~20% of the screen.
+//  Frequency across, time scrolling down. A live noise floor, a few
+//  drifting carriers, bursty packet trains, and every so often a strong
+//  signal that lights the band. Colormap: the classic SDR waterfall.
+// =====================================================================
+(() => {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cv = document.createElement('canvas');
+  cv.className = 'waterfall'; cv.setAttribute('aria-hidden', 'true');
+  document.body.prepend(cv);
+  const ctx = cv.getContext('2d', { alpha: true });
+
+  // ---- colormap: value 0..1 -> RGB (SDR style) ----
+  const STOPS = [[0,[6,8,18]],[0.18,[10,30,110]],[0.36,[0,120,210]],[0.52,[0,205,190]],
+                 [0.66,[70,220,60]],[0.80,[250,215,40]],[0.92,[240,70,40]],[1,[255,240,230]]];
+  const CMAP = new Array(256);
+  for (let i=0;i<256;i++){
+    const v=i/255; let a=STOPS[0], b=STOPS[STOPS.length-1];
+    for (let k=0;k<STOPS.length-1;k++){ if (v>=STOPS[k][0] && v<=STOPS[k+1][0]){ a=STOPS[k]; b=STOPS[k+1]; break; } }
+    const f=(v-a[0])/((b[0]-a[0])||1);
+    CMAP[i]=[Math.round(a[1][0]+(b[1][0]-a[1][0])*f), Math.round(a[1][1]+(b[1][1]-a[1][1])*f), Math.round(a[1][2]+(b[1][2]-a[1][2])*f)];
+  }
+
+  let W=0,H=0,dpr=1,bins=0,row=null,raf=0,last=0,acc=0;
+  const carriers=[]; const bursts=[];
+  const rnd=(a,b)=>a+Math.random()*(b-a);
+
+  function reseed(){
+    carriers.length=0;
+    const n = 3 + Math.floor(Math.random()*3);
+    for (let i=0;i<n;i++) carriers.push({ x:rnd(0.05,0.95), w:rnd(0.004,0.012), s:rnd(0.45,0.72), drift:rnd(-0.004,0.004), on:true, t:0, period:rnd(0.6,4) });
+  }
+
+  // one row of the spectrum, value per bin 0..1
+  function spectrumRow(t, dt){
+    const v = new Float32Array(bins);
+    for (let i=0;i<bins;i++) v[i] = 0.06 + Math.random()*0.13 + 0.05*Math.sin(i*0.05 + t*0.4);
+    // carriers: narrow, sometimes keyed on/off, slowly drifting
+    for (const c of carriers){
+      c.t += dt; if (c.t > c.period){ c.t=0; c.on = Math.random() < 0.75; }
+      c.x += c.drift*dt; if (c.x<0.03||c.x>0.97) c.drift*=-1;
+      if (!c.on) continue;
+      const cx=c.x*bins, cw=Math.max(1,c.w*bins);
+      for (let i=Math.floor(cx-cw*3); i<=cx+cw*3; i++){ if(i<0||i>=bins) continue;
+        const d=(i-cx)/cw; v[i] += c.s*Math.exp(-d*d*0.9); }
+    }
+    // bursts: the strong signals
+    for (let k=bursts.length-1;k>=0;k--){
+      const b=bursts[k]; b.age+=dt;
+      if (b.age>b.life){ bursts.splice(k,1); continue; }
+      const env = Math.sin(Math.PI*Math.min(1,b.age/b.life));        // swell in/out
+      let cx = b.x*bins;
+      if (b.kind==='chirp') cx = (b.x + (b.age/b.life)*b.sweep)*bins;   // sweep across
+      const cw = Math.max(2, b.w*bins);
+      let gate = 1;
+      if (b.kind==='packets') gate = (Math.floor(b.age*b.rate)%2===0) ? 1 : 0.05;  // on/off train
+      for (let i=Math.floor(cx-cw*2); i<=cx+cw*2; i++){ if(i<0||i>=bins) continue;
+        const d=(i-cx)/cw; v[i] += b.s*env*gate*Math.exp(-d*d*1.2); }
+      if (b.kind==='wideband') for (let i=0;i<bins;i++) v[i] += 0.08*env*Math.random();
+    }
+    return v;
+  }
+
+  function maybeBurst(dt){
+    acc += dt;
+    if (acc < rnd(2.5, 7)) return; acc = 0;
+    const kinds=['strong','packets','chirp','wideband'];
+    const kind = kinds[Math.floor(Math.random()*kinds.length)];
+    bursts.push({ kind, x:rnd(0.08,0.9), w: kind==='wideband'?0.35:rnd(0.02,0.09), s: kind==='strong'?rnd(0.9,1.1):rnd(0.7,0.95),
+                  age:0, life: kind==='packets'?rnd(2,4):rnd(1.2,3.2), sweep:rnd(-0.5,0.5), rate:rnd(4,10) });
+  }
+
+  function paintRow(v){
+    // scroll everything down one device pixel, then write the new top row
+    ctx.drawImage(cv, 0, 1);
+    for (let i=0;i<bins;i++){
+      const val = Math.max(0, Math.min(1, v[i]));
+      const c = CMAP[Math.round(val*255)];
+      row.data[i*4]=c[0]; row.data[i*4+1]=c[1]; row.data[i*4+2]=c[2]; row.data[i*4+3]=255;
+    }
+    ctx.putImageData(row, 0, 0);
+  }
+
+  let tt=0;
+  function frame(now){
+    const dt=Math.min(0.05,(now-last)/1000||0); last=now; tt+=dt;
+    maybeBurst(dt);
+    paintRow(spectrumRow(tt, dt));
+    raf=requestAnimationFrame(frame);
+  }
+
+  function resize(){
+    dpr=Math.min(2,window.devicePixelRatio||1);
+    W=Math.round(window.innerWidth*0.20); H=window.innerHeight;
+    cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
+    cv.style.width=W+'px'; cv.style.height=H+'px';
+    ctx.setTransform(1,0,0,1,0,0);          // work in device pixels for the row buffer
+    bins=cv.width; row=ctx.createImageData(bins,1);
+    ctx.fillStyle='#06081a'; ctx.fillRect(0,0,cv.width,cv.height);
+    reseed();
+    // pre-fill the whole display with history so it never starts blank
+    tt = 0;
+    for (let k=0;k<cv.height;k++){ maybeBurst(0.033); tt += 0.033; paintRow(spectrumRow(tt,0.033)); }
+  }
+  let rt; window.addEventListener('resize',()=>{clearTimeout(rt); rt=setTimeout(resize,150);});
+  document.addEventListener('visibilitychange',()=>{ if(reduced) return;
+    if(document.hidden){cancelAnimationFrame(raf); raf=0;} else if(!raf){ last=performance.now(); raf=requestAnimationFrame(frame);} });
+
+  resize();
+  if(!reduced){ last=performance.now(); raf=requestAnimationFrame(frame); }
+})();
